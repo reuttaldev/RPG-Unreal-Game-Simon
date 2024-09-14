@@ -16,7 +16,7 @@ class CPLUSPROJECT_API UInteractionUI : public UUserWidget
 	GENERATED_BODY()
 	
 public: 
-	void UpdateWidget(const FString& data);
+	void UpdateWidget(const FText& data) const;
 private:
 	UPROPERTY(VisibleAnywhere,meta = (BindWidget))
 	UTextBlock* textBlock;

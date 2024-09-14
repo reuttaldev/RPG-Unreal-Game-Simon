@@ -3,7 +3,7 @@
 
 #include "InteractionUI.h"
 
-void UInteractionUI::UpdateWidget(const FString& data)
+void UInteractionUI::UpdateWidget(const FText& data) const
 {
-	textBlock->SetText(FText::FromString(data));
+	textBlock->SetText(data);
 }

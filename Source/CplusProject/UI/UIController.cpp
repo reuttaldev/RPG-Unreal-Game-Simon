@@ -1,6 +1,3 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
-
 #include "UIController.h"
 
 void AUIController::BeginPlay()
@@ -41,26 +38,41 @@ void AUIController::BeginPlay()
 	}
 }
 
+
+
 void AUIController::OpenInteractionUI()
 {
 	interactionPanel->SetVisibility(ESlateVisibility::Visible);
 }
 
-void AUIController::UpdateInteractionUI(const FString& text)
+void AUIController::UpdateInteractionUI(const FItemData& data)
 {
-	if (interactionPanel)
+	switch (data.itemType)
 	{
-		if (interactionPanel->GetVisibility() == ESlateVisibility::Collapsed)
+		case ItemType::Interactable:
 		{
-			interactionPanel->SetVisibility()= ESlateVisibility::Visible
+			interactionPanel->UpdateWidget(data.description);
+			if (interactionPanel->GetVisibility() == ESlateVisibility::Collapsed)
+			{
+				interactionPanel->SetVisibility(ESlateVisibility::Visible);
+			}
+			break;
 		}
-		interactionPanel->UpdateWidget(text);
+		case ItemType::Lock:
+		{
+			OpenLockUI();
+			break;
+		}
+	}
+}
 
-	}
+void AUIController::CloseUI()
+{
+	if (interactionPanel->GetVisibility() == ESlateVisibility::Visible)
+		CloseInteractionUI();
 	else
-	{
-		UE_LOG(LogTemp, Error, TEXT("Does not have a reference to interaction panel"));
-	}
+		CloseLockUI();
+
 }
 
 void AUIController::CloseInteractionUI()
@@ -77,6 +89,13 @@ void AUIController::OpenLockUI()
 
 void AUIController::CloseLockUI()
 {
-	lockPanel	->SetVisibility(ESlateVisibility::Collapsed);
+	lockPanel->SetVisibility(ESlateVisibility::Collapsed);
 
+}
+void AUIController::OpenEncourageInteractUI()
+{
+}
+
+void AUIController::CloseEncourageInteractUI()
+{
 }

@@ -39,7 +39,20 @@ void AMyPlayerController::OnPossess(APawn* pawn)
 
  void AMyPlayerController::HandleInteractInput()
  {
+	 if (!canInteract)
+		 return; // we have nothing to interact with
 
+	 if (isInteracting)
+	 {
+		 isInteracting = false;
+		 lastHitActor = nullptr;
+		 uiController->CloseUI();
+	 }
+	 checkf(lastHitActor, TEXT("CanInteract bool is set to true, but lastHutActor is nullptr"));
+	 isInteracting = true;
+	 uiController->CloseEncourageInteractUI();
+	 uiController->UpdateInteractionUI(lastHitActor->GetItemData());
+	 //lastHitActor->Interact();
  }
 
  void AMyPlayerController::HandleMoveInput(const FInputActionValue& inputActionValue)
@@ -50,3 +63,37 @@ void AMyPlayerController::OnPossess(APawn* pawn)
 	 playerPtr->AddMovementInput(playerPtr->GetActorForwardVector(), movementVector.X);
 	 playerPtr->AddMovementInput(playerPtr->GetActorRightVector(), movementVector.Y);
  }
+
+ void AMyPlayerController::OverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+ {
+	 // check if the actor we hit implements the interaction interface.
+	 // if it doesn't, we don't care about it. 
+	 if (!OtherActor->GetClass()->ImplementsInterface(UInteractionInterface::StaticClass()))
+		 return;
+
+	 // set last hit actor to be what we collided with
+	 // cast OtherActor to the interface type
+	 IInteractionInterface* InterfacePtr = Cast<IInteractionInterface>(OtherActor);
+	 // assign the casted pointer to the TScriptInterface
+	 //lastHitActor = TScriptInterface<IInteractionInterface>(InterfacePtr);
+	 //lastHitActor = Cast< IInteractionInterface>(OtherActor);
+
+	 // show popup telling player they can interact with an item
+	 uiController->UpdateInteractionUI(InterfacePtr->GetItemData());
+	 // do some effect on the object e.g. highlight it 
+	 InterfacePtr->BeginFocus2D();
+	 // enable interaction action
+	 canInteract = true;
+ }
+
+ void AMyPlayerController::OverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
+ {
+	 // close popup telling player they can interact with an item
+	 uiController->CloseUI();
+	 //disable effect on the object
+     Cast<IInteractionInterface>(OtherActor)->EndFocus2D();
+	 // disable interaction action
+	 canInteract = false;
+	 lastHitActor = nullptr;
+ }
+
