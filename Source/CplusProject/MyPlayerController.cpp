@@ -1,6 +1,11 @@
 #include "MyPlayerController.h"
 #include "EnhancedInputSubsystems.h"
 
+void AMyPlayerController::BeginPlay()
+{
+
+}
+
 // on enable and on disable. pawn = player. This gets called once the controller gets connected to the player that was spawned.
 void AMyPlayerController::OnPossess(APawn* pawn)
 {
@@ -21,7 +26,10 @@ void AMyPlayerController::OnPossess(APawn* pawn)
 	// bind the input actions
 	inputComponentPtr->BindAction(actionMove, ETriggerEvent::Triggered, this, &AMyPlayerController::HandleMoveInput);
 	inputComponentPtr->BindAction(actionInteract, ETriggerEvent::Triggered, this, &AMyPlayerController::HandleInteractInput);
-	}
+
+	//  get a reference to the hud
+	uiController = Cast<AUIController>(APlayerController::GetHUD());
+}
 
  void AMyPlayerController::OnUnPossess()
  {
