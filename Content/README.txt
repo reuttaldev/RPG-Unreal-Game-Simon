@@ -2,3 +2,6 @@ Garbage Collection: For UObject pointers (including pointers to classes that der
 
 
 	FItemData itemData; in the interface
+
+Assets used: 
+https://opengameart.org/content/sara-16x18
