@@ -3,8 +3,8 @@
 AAInteractableActor::AAInteractableActor()
 {
 	// create the mesh and make it the parent
-	mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
-	SetRootComponent(mesh);
+	//mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
+	//SetRootComponent(mesh);
 }
 void AAInteractableActor::BeginFocus2D()
 {
