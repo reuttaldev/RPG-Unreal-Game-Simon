@@ -25,7 +25,8 @@ public:
 	UInputAction* actionInteract= nullptr;
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Player Input")
 	UInputMappingContext* inputMappingContext = nullptr;
-
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+	FVector2D direction;
 protected:
 	// ============================= FUNCTIONS =============================
 	virtual void BeginPlay() override;

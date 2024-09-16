@@ -5,9 +5,9 @@ AFlickeringLight::AFlickeringLight()
     PrimaryActorTick.bCanEverTick = true;
     // init settings
     timePassed= 0.0f;
-    minIntensity = 100;
-    maxIntensity = 200;
-    flickerBreak = 0.2;
+    minIntensity = 70;
+    maxIntensity = 100;
+    flickerBreak = 0.1;
     // create component
     // Create a root components
     USceneComponent* root = CreateDefaultSubobject<USceneComponent>(TEXT("RootComponent"));

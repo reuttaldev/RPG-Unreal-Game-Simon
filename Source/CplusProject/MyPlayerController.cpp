@@ -62,6 +62,10 @@ void AMyPlayerController::OnPossess(APawn* pawn)
 	 //execute movement. AddMovementInput is inhereted from 
 	 playerPtr->AddMovementInput(playerPtr->GetActorForwardVector(), movementVector.X);
 	 playerPtr->AddMovementInput(playerPtr->GetActorRightVector(), movementVector.Y);
+	 // this will be used in the animation
+	 direction.X = movementVector.X;
+	 direction.Y = -movementVector.Y;
+
  }
 
  void AMyPlayerController::OverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
