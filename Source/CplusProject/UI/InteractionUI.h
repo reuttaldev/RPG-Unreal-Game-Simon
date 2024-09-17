@@ -15,9 +15,10 @@ class CPLUSPROJECT_API UInteractionUI : public UUserWidget
 {
 	GENERATED_BODY()
 	
-public: 
-	void UpdateWidget(const FText& data) const;
 private:
 	UPROPERTY(VisibleAnywhere,meta = (BindWidget))
 	UTextBlock* textBlock;
+public: 
+	inline void UpdateWidget(const FText& data) const {textBlock->SetText(data);}
+
 };

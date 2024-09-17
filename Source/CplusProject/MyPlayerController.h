@@ -7,7 +7,7 @@
 #include "InputMappingContext.h"
 #include "GameFramework/Character.h"
 #include "Delegates/Delegate.h"
-#include "UI/UIController.h"
+#include "UI/GameUIContoller.h"
 #include "Interfaces/InteractionInterface.h"
 #include "MyPlayerController.generated.h"
 
@@ -19,7 +19,6 @@ class CPLUSPROJECT_API AMyPlayerController : public APlayerController
 public:
 
 	// ============================= PROPERTIES =============================
-
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Player Input")
 	UInputAction* actionMove= nullptr;
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Player Input")
@@ -48,7 +47,7 @@ private:
 	UPROPERTY()
 	UCapsuleComponent* playerCollisionComponent = nullptr;
 	UPROPERTY()
-	AUIController* uiController= nullptr;
+	AGameUIContoller* uiController= nullptr;
 	UPROPERTY()
 	// creating a copy of the item data belonging to the actor we last interacted with. We cannot keep the actor since the reference will become invalid at the end of the OnOverlap functions, and there is no point of creating a copy of the whole thing
 	FItemData lastInteractedItemData;

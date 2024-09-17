@@ -1,5 +1,3 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "CoreMinimal.h"
@@ -17,6 +15,8 @@ public:
 	virtual void Tick(float DeltaTime) override;
 	UPROPERTY(EditAnywhere)
 	FString doorName; 
+	UPROPERTY(EditAnywhere)
+	FString nextLevelName;
 
 protected:
 	// Called when the game starts or when spawned

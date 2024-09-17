@@ -42,7 +42,7 @@ void AMyPlayerController::OnPossess(APawn* pawn)
 	inputComponentPtr->BindAction(actionInteract, ETriggerEvent::Started, this, &AMyPlayerController::HandleInteractInput);
 
 	//  get a reference to the hud
-	uiController = Cast<AUIController>(APlayerController::GetHUD());
+	uiController = Cast<AGameUIContoller>(APlayerController::GetHUD());
 	checkf(uiController, TEXT("Unable to get uiController"));
 
 }
@@ -99,7 +99,7 @@ void AMyPlayerController::OnPossess(APawn* pawn)
  void AMyPlayerController::OverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
  {
 	 // close popup telling player they can interact with an item
-	 uiController->CloseAllInteractionUI();
+	 uiController->CloseAll();
 	 //disable effect on the object
      Cast<IInteractionInterface>(OtherActor)->EndFocus2D();
 	 // disable interaction action
@@ -116,7 +116,7 @@ void AMyPlayerController::OnPossess(APawn* pawn)
 	 // if we press E while the panels are already open, close them
 	 if (isInteracting)
 	 {
-		 uiController->CloseAllInteractionUI();
+		 uiController->CloseAll();
 		 isInteracting = false;
 		 return;
 	 }

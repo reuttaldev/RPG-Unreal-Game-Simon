@@ -13,6 +13,8 @@ Naked pointers (i.e. ones that are not declared with UPROPERTY) are not nulled o
 
 	FItemData itemData; in the interface
 
+If your game requires distinct HUD elements for different modes or states (e.g., a menu screen versus an in-game HUD),
+
 Assets used: 
 
 
