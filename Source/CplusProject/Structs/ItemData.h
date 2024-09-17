@@ -3,23 +3,24 @@
 #include "CoreMinimal.h"
 #include "ItemData.generated.h"  
 UENUM()
-enum class ItemType
+enum class ItemType : uint8
 {
-	Interactable,
+	Interactable ,
 	Static,
 	Lock,
 	// for further development use
 	NPC,
-	Pickup
+	Pickup,
 };
 
 USTRUCT()
 struct CPLUSPROJECT_API FItemData
 {
 	GENERATED_BODY();
+public:
 	FItemData();
-	UPROPERTY(EditInstanceOnly) // each instance will have its own copy of an ItemData
+	UPROPERTY(editanywhere) // each instance will have its own copy of an ItemData
 	ItemType itemType;
-	UPROPERTY(EditInstanceOnly)
+	UPROPERTY(editanywhere)
 	FText description;
 };

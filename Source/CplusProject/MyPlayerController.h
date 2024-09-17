@@ -1,6 +1,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Components/CapsuleComponent.h"
 #include "GameFramework/PlayerController.h"
 #include "EnhancedInputComponent.h"
 #include "InputMappingContext.h"
@@ -25,8 +26,10 @@ public:
 	UInputAction* actionInteract= nullptr;
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Player Input")
 	UInputMappingContext* inputMappingContext = nullptr;
-	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+	UPROPERTY(BlueprintReadWrite, VisibleAnywhere)
 	FVector2D direction;
+	// ============================= FUNCTIONS =============================
+	AMyPlayerController();
 protected:
 	// ============================= FUNCTIONS =============================
 	virtual void BeginPlay() override;
@@ -43,13 +46,16 @@ private:
 	UPROPERTY()
 	ACharacter* playerPtr = nullptr;
 	UPROPERTY()
+	UCapsuleComponent* playerCollisionComponent = nullptr;
+	UPROPERTY()
 	AUIController* uiController= nullptr;
-	// the actor that we last collided with which implements the interaction interface
-	TScriptInterface<IInteractionInterface> lastHitActor= nullptr;
+	UPROPERTY()
+	// creating a copy of the item data belonging to the actor we last interacted with. We cannot keep the actor since the reference will become invalid at the end of the OnOverlap functions, and there is no point of creating a copy of the whole thing
+	FItemData lastInteractedItemData;
 	// this is set to true when we are in close proximity of an intractable object
-	bool canInteract = false;
+	bool canInteract;
 	// are we currently interacting with something?
-	bool isInteracting = false;
+	bool isInteracting;
 // ============================= FUNCTIONS =============================
 	//will be called on collision enter. here I will check if I hit anything that inherits from InteractionInterface
 	UFUNCTION()

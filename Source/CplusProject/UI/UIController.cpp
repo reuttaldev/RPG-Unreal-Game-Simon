@@ -14,7 +14,16 @@ void AUIController::BeginPlay()
 	{
 		UE_LOG(LogTemp, Error, TEXT("could not get main menu class"))
 	}
-
+	if (gameOverUIClass)
+	{
+		gameOverPanel = CreateWidget<UGameOverUI>(GetWorld(), gameOverUIClass);
+		gameOverPanel->AddToViewport();
+		gameOverPanel->SetVisibility(ESlateVisibility::Collapsed);
+	}
+	else
+	{
+		UE_LOG(LogTemp, Error, TEXT("could not getgameOverUIClass"))
+	}
 	if (interactionUIClass)
 	{
 		interactionPanel = CreateWidget<UInteractionUI>(GetWorld(), interactionUIClass);
@@ -26,7 +35,7 @@ void AUIController::BeginPlay()
 		UE_LOG(LogTemp, Error, TEXT("could not get interactionUIClass"))
 	}
 
-	if (lockPanel)
+	if (lockUIClass)
 	{
 		lockPanel = CreateWidget<ULockUI>(GetWorld(), lockUIClass);
 		lockPanel->AddToViewport();
@@ -36,9 +45,18 @@ void AUIController::BeginPlay()
 	{
 		UE_LOG(LogTemp, Error, TEXT("could not get lockUIClass"))
 	}
+
+	if (enourageInteractionUIClass)
+	{
+		encourageInteractionPanel = CreateWidget<UUserWidget>(GetWorld(), enourageInteractionUIClass);
+		encourageInteractionPanel->AddToViewport();
+		encourageInteractionPanel->SetVisibility(ESlateVisibility::Collapsed);
+	}
+	else
+	{
+		UE_LOG(LogTemp, Error, TEXT("could not get enourageInteractionUIClass"))
+	}
 }
-
-
 
 void AUIController::OpenInteractionUI()
 {
@@ -66,36 +84,56 @@ void AUIController::UpdateInteractionUI(const FItemData& data)
 	}
 }
 
-void AUIController::CloseUI()
+void AUIController::CloseAllInteractionUI()
 {
 	if (interactionPanel->GetVisibility() == ESlateVisibility::Visible)
 		CloseInteractionUI();
-	else
+	if (encourageInteractionPanel->GetVisibility() == ESlateVisibility::Visible)
+		CloseEncourageInteractUI();
+	if (lockPanel->GetVisibility() == ESlateVisibility::Visible)
 		CloseLockUI();
-
 }
 
 void AUIController::CloseInteractionUI()
 {
 	interactionPanel->SetVisibility(ESlateVisibility::Collapsed);
-
 }
 
 void AUIController::OpenLockUI()
 {
 	lockPanel->SetVisibility(ESlateVisibility::Visible);
-
 }
 
 void AUIController::CloseLockUI()
 {
 	lockPanel->SetVisibility(ESlateVisibility::Collapsed);
-
 }
 void AUIController::OpenEncourageInteractUI()
 {
+	encourageInteractionPanel->SetVisibility(ESlateVisibility::Visible);
 }
 
 void AUIController::CloseEncourageInteractUI()
 {
+	encourageInteractionPanel->SetVisibility(ESlateVisibility::Collapsed);
+}
+
+void AUIController::OpenMainMenu()
+{
+	mainMenuPanel->SetVisibility(ESlateVisibility::Visible);
+}
+
+void AUIController::CloseMainMenu()
+{
+	mainMenuPanel->SetVisibility(ESlateVisibility::Collapsed);
+}
+
+void AUIController::OpenGameOverUI()
+{
+	gameOverPanel->SetVisibility(ESlateVisibility::Visible);
+}
+
+void AUIController::CloseGameOverUI()
+{
+	gameOverPanel->SetVisibility(ESlateVisibility::Collapsed);
 }

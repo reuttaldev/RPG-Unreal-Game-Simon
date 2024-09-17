@@ -17,10 +17,9 @@ public:
 	AAInteractableActor();
 	virtual void BeginFocus2D() override;
 	virtual void EndFocus2D() override;
-	virtual void Interact() override; 
-protected:
+	virtual const FItemData GetItemData() const override{ return itemData; };
 	// ============================= PROPERTIES =============================
-	UPROPERTY(EditAnywhere)
-	UStaticMeshComponent* mesh;
+	UPROPERTY(editanywhere)
+	FItemData itemData;
 
 };

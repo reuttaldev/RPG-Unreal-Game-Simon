@@ -22,13 +22,7 @@ class CPLUSPROJECT_API IInteractionInterface
 	GENERATED_BODY()
 public:
 	// ============================= FUNCTIONS =============================
-	virtual void Interact() =0;
 	virtual void BeginFocus2D()=0;
 	virtual void EndFocus2D() = 0;
-	inline const FItemData& GetItemData() const {return itemData;}
-
-
-protected:
-	// ============================= PROPERTIES =============================
-	FItemData itemData;
+	virtual const FItemData GetItemData() const = 0;
 };

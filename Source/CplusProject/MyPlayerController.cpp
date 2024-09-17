@@ -1,6 +1,12 @@
 #include "MyPlayerController.h"
 #include "EnhancedInputSubsystems.h"
 
+AMyPlayerController::AMyPlayerController()
+{
+	canInteract = false;
+	isInteracting = false;
+}
+
 void AMyPlayerController::BeginPlay()
 {
 
@@ -12,47 +18,39 @@ void AMyPlayerController::OnPossess(APawn* pawn)
 	Super::OnPossess(pawn);
 	inputComponentPtr = Cast<UEnhancedInputComponent>(InputComponent);
 	// check f will crash the game and output an error if the first argument is invalid 
-	checkf(inputComponentPtr, TEXT("Unable to get a reference to UEnhancedInputComponent"));
+	checkf(inputComponentPtr, TEXT("Unable to get UEnhancedInputComponent"));
 	// get a reference to the player character (pawn)
 	playerPtr = Cast<ACharacter>(pawn);
-	checkf(playerPtr, TEXT("Unable to get a reference to player"));
+	checkf(playerPtr, TEXT("Unable to get player"));
+
+	// get the collision component of the player 
+	playerCollisionComponent = playerPtr->FindComponentByClass<UCapsuleComponent>();
+	checkf(playerCollisionComponent, TEXT("Unable to player collision component"));
+	// bind the collision to activate the on begin function we have here 
+	playerCollisionComponent->OnComponentBeginOverlap.AddDynamic(this, &AMyPlayerController::OverlapBegin);
+	playerCollisionComponent->OnComponentEndOverlap.AddDynamic(this, &AMyPlayerController::OverlapEnd);
+
 
 	// Get the local player subsystem
 	UEnhancedInputLocalPlayerSubsystem* inputSubsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer());
-	checkf(inputSubsystem, TEXT("Unable to get a reference to UEnhancedInputLocalPlayerSubsystem."));
+	checkf(inputSubsystem, TEXT("Unable to get UEnhancedInputLocalPlayerSubsystem."));
 
 	inputSubsystem->AddMappingContext(inputMappingContext, 0);
 
 	// bind the input actions
 	inputComponentPtr->BindAction(actionMove, ETriggerEvent::Triggered, this, &AMyPlayerController::HandleMoveInput);
-	inputComponentPtr->BindAction(actionInteract, ETriggerEvent::Triggered, this, &AMyPlayerController::HandleInteractInput);
+	inputComponentPtr->BindAction(actionInteract, ETriggerEvent::Started, this, &AMyPlayerController::HandleInteractInput);
 
 	//  get a reference to the hud
 	uiController = Cast<AUIController>(APlayerController::GetHUD());
+	checkf(uiController, TEXT("Unable to get uiController"));
+
 }
 
  void AMyPlayerController::OnUnPossess()
  {
 	 inputComponentPtr->ClearActionBindings();
 	 Super::OnUnPossess();
- }
-
- void AMyPlayerController::HandleInteractInput()
- {
-	 if (!canInteract)
-		 return; // we have nothing to interact with
-
-	 if (isInteracting)
-	 {
-		 isInteracting = false;
-		 lastHitActor = nullptr;
-		 uiController->CloseUI();
-	 }
-	 checkf(lastHitActor, TEXT("CanInteract bool is set to true, but lastHutActor is nullptr"));
-	 isInteracting = true;
-	 uiController->CloseEncourageInteractUI();
-	 uiController->UpdateInteractionUI(lastHitActor->GetItemData());
-	 //lastHitActor->Interact();
  }
 
  void AMyPlayerController::HandleMoveInput(const FInputActionValue& inputActionValue)
@@ -70,22 +68,30 @@ void AMyPlayerController::OnPossess(APawn* pawn)
 
  void AMyPlayerController::OverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
  {
+	 if (!OtherActor || !OtherActor->GetClass())
+	 {
+		 UE_LOG(LogTemp, Warning, TEXT("Invalid OtherActor"));
+		 return;
+	 }
 	 // check if the actor we hit implements the interaction interface.
 	 // if it doesn't, we don't care about it. 
 	 if (!OtherActor->GetClass()->ImplementsInterface(UInteractionInterface::StaticClass()))
+	 {
+		 UE_LOG(LogTemp, Warning, TEXT("OtherActor does not implement IInteractionInterface"));
 		 return;
-
-	 // set last hit actor to be what we collided with
-	 // cast OtherActor to the interface type
-	 IInteractionInterface* InterfacePtr = Cast<IInteractionInterface>(OtherActor);
-	 // assign the casted pointer to the TScriptInterface
-	 //lastHitActor = TScriptInterface<IInteractionInterface>(InterfacePtr);
-	 //lastHitActor = Cast< IInteractionInterface>(OtherActor);
-
+	 }
+	 // cast OtherActor to the interface type 
+	 IInteractionInterface* interfacePtr = Cast<IInteractionInterface>(OtherActor);
+	 lastInteractedItemData = interfacePtr->GetItemData();
 	 // show popup telling player they can interact with an item
-	 uiController->UpdateInteractionUI(InterfacePtr->GetItemData());
+	 if (!uiController)
+	 {
+		 UE_LOG(LogTemp, Warning, TEXT("OtherActor does not implement IInteractionInterface"));
+		 return;
+	 }
+	 uiController->OpenEncourageInteractUI();
 	 // do some effect on the object e.g. highlight it 
-	 InterfacePtr->BeginFocus2D();
+	 interfacePtr->BeginFocus2D();
 	 // enable interaction action
 	 canInteract = true;
  }
@@ -93,11 +99,31 @@ void AMyPlayerController::OnPossess(APawn* pawn)
  void AMyPlayerController::OverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
  {
 	 // close popup telling player they can interact with an item
-	 uiController->CloseUI();
+	 uiController->CloseAllInteractionUI();
 	 //disable effect on the object
      Cast<IInteractionInterface>(OtherActor)->EndFocus2D();
 	 // disable interaction action
 	 canInteract = false;
-	 lastHitActor = nullptr;
+	 isInteracting = false;
+ }
+
+ 
+ void AMyPlayerController::HandleInteractInput()
+ {
+	 UE_LOG(LogTemp, Warning, TEXT("Pressed"));
+	 if (!canInteract)
+		 return; // we have nothing to interact with
+	 // if we press E while the panels are already open, close them
+	 if (isInteracting)
+	 {
+		 uiController->CloseAllInteractionUI();
+		 isInteracting = false;
+		 return;
+	 }
+	 isInteracting = true;
+	 // close popup
+	 uiController->CloseEncourageInteractUI();
+	 // open interaction panel with relevant text
+	 uiController->UpdateInteractionUI(lastInteractedItemData);
  }
 
