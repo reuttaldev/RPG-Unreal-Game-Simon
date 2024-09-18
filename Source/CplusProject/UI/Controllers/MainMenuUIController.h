@@ -2,8 +2,8 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/HUD.h"
-#include "MainMenuUI.h"
 #include "UIController.h"
+#include "CplusProject/UI/Widgets/GameOverUI.h"
 #include "MainMenuUIController.generated.h"
 
 UCLASS()

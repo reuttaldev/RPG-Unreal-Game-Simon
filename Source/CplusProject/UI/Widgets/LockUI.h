@@ -3,6 +3,7 @@
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
 #include "Components/Button.h"
+#include "CplusProject/LockController.h"
 #include "LockUI.generated.h"
 
 UCLASS()
@@ -19,4 +20,6 @@ public:
 	UButton* blueButton;
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
 	UButton* yellowButton;
+	UPROPERTY()
+	ALockController* lockController;
 };

@@ -7,7 +7,7 @@
 #include "InputMappingContext.h"
 #include "GameFramework/Character.h"
 #include "Delegates/Delegate.h"
-#include "UI/GameUIContoller.h"
+#include "UI/Controllers/GameUIContoller.h"
 #include "Interfaces/InteractionInterface.h"
 #include "MyPlayerController.generated.h"
 

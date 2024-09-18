@@ -2,9 +2,9 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/HUD.h"
-#include "InteractionUI.h"
-#include "LockUI.h"
-#include "../Structs/ItemData.h"
+#include "CplusProject/UI/Widgets/LockUI.h"
+#include "CplusProject/Structs/ItemData.h"
+#include "CplusProject/UI/Widgets/InteractionUI.h"
 #include "UIController.h"
 #include "GameUIContoller.generated.h"
 

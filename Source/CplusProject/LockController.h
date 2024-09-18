@@ -1,7 +1,7 @@
 #pragma once
-
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Structs/SimonData.h"
 #include "LockController.generated.h"
 
 UCLASS()
@@ -10,16 +10,16 @@ class CPLUSPROJECT_API ALockController : public AActor
 	GENERATED_BODY()
 	
 public:	
-	// Sets default values for this actor's properties
+	// ============================= FUNCTIONS =============================
 	ALockController();
-	virtual void Tick(float DeltaTime) override;
-	UPROPERTY(EditAnywhere)
-	FString doorName; 
-	UPROPERTY(EditAnywhere)
+	// ============================= PROPERTIES =============================
+
+	UPROPERTY(EditAnywhere, Category = "Data")
+	FSimonData simonData;
+	UPROPERTY(EditAnywhere, Category = "Data")
 	FString nextLevelName;
 
 protected:
-	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 private:

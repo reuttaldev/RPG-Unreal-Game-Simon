@@ -1,6 +1,3 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
-
 #include "LockController.h"
 
 // Sets default values
@@ -18,10 +15,4 @@ void ALockController::BeginPlay()
 	
 }
 
-// Called every frame
-void ALockController::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-
-}
 

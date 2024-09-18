@@ -2,7 +2,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/HUD.h"
-#include "GameOverUI.h"
+#include "CplusProject/UI/Widgets/GameOverUI.h"
 #include "UIController.h"
 #include "GameOverUIController.generated.h"
 
