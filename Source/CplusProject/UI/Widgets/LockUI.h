@@ -60,4 +60,7 @@ private:
 	UAudioComponent* audioComponent= nullptr;
 	// ============================= FUNCTIONS =============================
 	void ValidityChecks();
+	void PlaySound(int8 noteNumber);
+	void ResetSequence();
+	void AddToSequence(int8 noteNumber);
 };
