@@ -2,8 +2,6 @@
 
 void UMainMenuUI::StartGame()
 {
-
-	UE_LOG(LogTemp, Warning, TEXT("start game button was pressed"));
 	UGameplayStatics::OpenLevel(GetWorld(), "Room1");
 }
 

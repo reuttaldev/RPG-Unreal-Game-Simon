@@ -35,6 +35,7 @@ public:
 	FSimonData();
 
 	// indicate which node will sound when a button is pressed
+	// audios that should be heard when each button is pressed
 	UPROPERTY(EditAnywhere, Category = "Notes")
 	Notes redNote;
 	UPROPERTY(EditAnywhere, Category = "Notes")
@@ -47,15 +48,4 @@ public:
 	// the unique sequence of notes the device shall play
 	UPROPERTY(EditAnywhere, Category = "Sequence")
 	TArray<Notes> sequence;
-
-	// audios that should be heard when each button is pressed
-	UPROPERTY(EditAnywhere, Category = "Audio")
-	USoundBase* redButtonAudio;
-	UPROPERTY(EditAnywhere, Category = "Audio")
-	USoundBase* blueButtonAudio;
-	UPROPERTY(EditAnywhere, Category = "Audio")
-	USoundBase* greenButtonAudio;
-	UPROPERTY(EditAnywhere, Category = "Audio")
-	USoundBase* yellowButtonAudio;
-
 };

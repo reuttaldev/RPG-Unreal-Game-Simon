@@ -106,11 +106,9 @@ void AMyPlayerController::OnPossess(APawn* pawn)
 	 canInteract = false;
 	 isInteracting = false;
  }
-
  
  void AMyPlayerController::HandleInteractInput()
  {
-	 UE_LOG(LogTemp, Warning, TEXT("Pressed"));
 	 if (!canInteract)
 		 return; // we have nothing to interact with
 	 // if we press E while the panels are already open, close them
