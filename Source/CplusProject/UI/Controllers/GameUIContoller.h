@@ -30,6 +30,8 @@ public:
 	void OpenEncourageInteractUI();
 	void CloseEncourageInteractUI();
 	void SetLockController(ULockControllerComponent* newController);
+	UFUNCTION()
+	void CloseLockUI();
 protected:
 	virtual void BeginPlay() override;
 private:
@@ -45,5 +47,4 @@ private:
 	void CloseInteractionUI();
 	void OpenInteractionUI();
 	void OpenLockUI();
-	void CloseLockUI();
 };

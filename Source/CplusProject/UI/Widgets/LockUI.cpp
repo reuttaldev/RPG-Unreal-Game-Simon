@@ -1,12 +1,16 @@
 #include "LockUI.h"
+#include "../Controllers/GameUIContoller.h"
 #include "Kismet/GameplayStatics.h"
-
 
 void ULockUI::NativeConstruct()
 {
 	Super::NativeConstruct();
 	audioComponent = NewObject<UAudioComponent>(this);
 	audioComponent->RegisterComponentWithWorld(GetWorld());
+	audioComponent->SetVolumeMultiplier(volumeMultiplier);
+	hintButton->OnClicked.AddDynamic(this, &ULockUI::PlaySequence);
+	closeButton->OnClicked.AddDynamic(this, &ULockUI::CloseLockUI);
+	HideErrorImage();
 }
 void ULockUI::SetLockController(ULockControllerComponent* newController)
 {
@@ -38,7 +42,6 @@ bool ULockUI::ValidityChecks(ULockControllerComponent* newController) const
 
 void ULockUI::BindButtons()
 {
-	hintButton->OnClicked.AddDynamic(this, &ULockUI::GiveHint);
 	redButton->OnClicked.AddDynamic(this, &ULockUI::RedButton);
 	blueButton->OnClicked.AddDynamic(this, &ULockUI::BlueButton);
 	greenButton->OnClicked.AddDynamic(this, &ULockUI::GreenButton);
@@ -47,19 +50,18 @@ void ULockUI::BindButtons()
 
 void ULockUI::PlaySound(int8 noteNumber)
 {
-	audioComponent->SetSound(notesAudio[noteNumber+1]);
+	audioComponent->SetSound(notesAudio[noteNumber]);
 	audioComponent->Play();
 }
 void ULockUI::OnButtonClick(Notes note)
 {
-	PlaySound((uint8)note);
+	PlaySound((uint8)note+1);
 	AddToSequence(note);
 	bool success = CheckSequence();
 	UE_LOG(LogTemp, Warning, TEXT("Success is %s"), success ? TEXT("true") : TEXT("false"));
 	if (success)
 	{
 		OpenLock();
-		UE_LOG(LogTemp, Warning, TEXT("Opening Lock"));
 	}
 }
 
@@ -83,13 +85,21 @@ void ULockUI::YellowButton()
 	OnButtonClick(lockController->simonData.yellowNote);
 }
 
-void ULockUI::GiveHint()
+void ULockUI::CloseLockUI()
 {
+	if (APlayerController* playerController = GetWorld()->GetFirstPlayerController())
+	{
+		AHUD* HUD = playerController->GetHUD();
+		AGameUIContoller* gameUIController = Cast<AGameUIContoller>(HUD);
+		if (gameUIController)
+		{
+			gameUIController->CloseLockUI(); 
+		}
+	}
 }
 
 bool ULockUI::CheckSequence()
 {
-	UE_LOG(LogTemp, Warning, TEXT("len is: %d"), sequence.Num());
 	if(sequence.Num() < lockController->simonData.sequence.Num())
 		return false;
 	if (sequence.Num() > lockController->simonData.sequence.Num())
@@ -116,8 +126,9 @@ void ULockUI::DebugSequences()
 		UE_LOG(LogTemp, Warning, TEXT("%d"), (int8)note);
 	}
 }
-void ULockUI::PlaySequence() const
+void ULockUI::PlaySequence() 
 {
+	PlayNextSound(-1);
 }
 void ULockUI::ResetSequence()
 {
@@ -131,11 +142,34 @@ void ULockUI::AddToSequence(Notes note)
 
 void ULockUI::ShowWrongSequenceUI()
 {
-	ResetSequence();
+	audioComponent->SetSound(errorSound);
+	audioComponent->Play();
+	ShowErrorImage();
+	GetWorld()->GetTimerManager().SetTimer(flashTimerHandle, this, &ULockUI::HideErrorImage, timeBetweenNotes, false);
 }
 
 void ULockUI::OpenLock()
 {
-
+	UE_LOG(LogTemp, Warning, TEXT("Opening Lock"));
+}
+void ULockUI::ShowErrorImage()
+{
+	errorImage	->SetVisibility(ESlateVisibility::Visible);
+}
+void ULockUI::HideErrorImage()
+{
+	errorImage	->SetVisibility(ESlateVisibility::Collapsed);
 }
 
+void ULockUI::PlayNextSound(int i)
+{
+	i++;
+	if (i >= lockController->simonData.sequence.Num())
+	{
+		return; 
+	}
+	UE_LOG(LogTemp, Warning, TEXT("playing index %d"), (int8)i);
+	PlaySound(i);
+	playNoteDelegate.BindUObject(this, &ULockUI::PlayNextSound, i);
+	GetWorld()->GetTimerManager().SetTimer(playTimerHandle, playNoteDelegate, timeBetweenNotes, false);
+}

@@ -6,6 +6,7 @@
 #include "../../Environment/LockControllerComponent.h"
 #include "../../Structs/SimonData.h"
 #include "Components/AudioComponent.h"
+#include "Components/Image.h"
 #include "LockUI.generated.h"
 
 UCLASS()
@@ -24,8 +25,18 @@ public:
 	UButton* yellowButton;
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget), Category = "UI Binding")
 	UButton* hintButton;
+	UPROPERTY(VisibleAnywhere, meta = (BindWidget), Category = "UI Binding")
+	UButton* closeButton;
+	UPROPERTY(VisibleAnywhere, meta = (BindWidget), Category = "UI Binding")
+	UImage* errorImage;
 	UPROPERTY(EditAnywhere, Category = "Audio")
 	TArray<USoundBase*> notesAudio;
+	UPROPERTY(EditAnywhere, Category = "Audio")
+	USoundBase* errorSound;
+	UPROPERTY(EditAnywhere, Category = "Audio")
+	float timeBetweenNotes = 0.7f;
+	UPROPERTY(EditAnywhere, Category = "Audio")
+	float volumeMultiplier = 2;
 	// ============================= FUNCTIONS =============================
 	UFUNCTION()
 	void BindButtons();
@@ -38,10 +49,11 @@ public:
 	UFUNCTION()
 	void YellowButton() ;
 	UFUNCTION()
-	void GiveHint();
+	void CloseLockUI();
+	UFUNCTION()
+	void PlaySequence();
 	// returns true if the player was able to play the sequence that is set in the lock data
 	bool CheckSequence();
-	void PlaySequence() const;
 	void OpenLock();
 	void SetLockController(ULockControllerComponent* newController);
 protected:
@@ -57,6 +69,9 @@ private:
 	UPROPERTY()
 	// to keep track of what the player has pressed so far
 	TArray<Notes> sequence;
+	FTimerHandle flashTimerHandle;
+	FTimerHandle playTimerHandle;
+	FTimerDelegate playNoteDelegate;
 	// ============================= FUNCTIONS =============================
 	bool ValidityChecks(ULockControllerComponent* newController) const;
 	void PlaySound(int8 noteNumber);
@@ -65,5 +80,7 @@ private:
 	void ShowWrongSequenceUI();
 	void OnButtonClick(Notes note);
 	void DebugSequences();
-
+	void ShowErrorImage();
+	void HideErrorImage();
+	void PlayNextSound(int i);
 };
