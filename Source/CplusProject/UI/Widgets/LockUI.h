@@ -63,4 +63,5 @@ private:
 	void PlaySound(int8 noteNumber);
 	void ResetSequence();
 	void AddToSequence(int8 noteNumber);
+	void ShowWrongSequenceUI();
 };

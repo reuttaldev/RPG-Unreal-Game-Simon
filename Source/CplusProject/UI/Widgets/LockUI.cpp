@@ -43,17 +43,8 @@ void ULockUI::BindButtons()
 
 void ULockUI::PlaySound(int8 noteNumber)
 {
-	UE_LOG(LogTemp, Warning, TEXT("The integer value of Note is: %d"), noteNumber);
 	audioComponent->SetSound(notesAudio[noteNumber+1]);
 	audioComponent->Play();
-}
-
-void ULockUI::ResetSequence()
-{
-}
-
-void ULockUI::AddToSequence(int8 noteNumber)
-{
 }
 
 void ULockUI::RedButton()
@@ -63,17 +54,17 @@ void ULockUI::RedButton()
 
 void ULockUI::BlueButton()
 {
-	PlaySound(static_cast<uint8>(lockController->simonData.blueNote));
+	PlaySound((uint8)lockController->simonData.blueNote);
 }
 
 void ULockUI::GreenButton()
 {
-	PlaySound(static_cast<uint8>(lockController->simonData.greenNote));
+	PlaySound((uint8)lockController->simonData.greenNote);
 }
 
 void ULockUI::YellowButton()
 {
-	PlaySound(static_cast<uint8>(lockController->simonData.yellowNote));
+	PlaySound((uint8)lockController->simonData.yellowNote);
 }
 
 void ULockUI::GiveHint()
@@ -88,7 +79,20 @@ bool ULockUI::CheckSequence(const TArray<Notes>& checkSequence) const
 void ULockUI::PlaySequence() const
 {
 }
+void ULockUI::ResetSequence()
+{
+}
+
+void ULockUI::AddToSequence(int8 noteNumber)
+{
+}
+
+void ULockUI::ShowWrongSequenceUI()
+{
+	ResetSequence();
+}
 
 void ULockUI::OpenLock()
 {
+
 }
