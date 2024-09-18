@@ -7,8 +7,8 @@
 #include "InputMappingContext.h"
 #include "GameFramework/Character.h"
 #include "Delegates/Delegate.h"
-#include "UI/Controllers/GameUIContoller.h"
-#include "Interfaces/InteractionInterface.h"
+#include "../UI/Controllers/GameUIContoller.h"
+#include "../Interfaces/InteractionInterface.h"
 #include "MyPlayerController.generated.h"
 
 UCLASS(Abstract)
@@ -49,8 +49,7 @@ private:
 	UPROPERTY()
 	AGameUIContoller* uiController= nullptr;
 	UPROPERTY()
-	// creating a copy of the item data belonging to the actor we last interacted with. We cannot keep the actor since the reference will become invalid at the end of the OnOverlap functions, and there is no point of creating a copy of the whole thing
-	FItemData lastInteractedItemData;
+	AActor* lastInteractedActor = nullptr;
 	// this is set to true when we are in close proximity of an intractable object
 	bool canInteract;
 	// are we currently interacting with something?

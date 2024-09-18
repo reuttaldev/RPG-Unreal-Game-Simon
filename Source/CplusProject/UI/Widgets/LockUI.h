@@ -3,7 +3,7 @@
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
 #include "Components/Button.h"
-#include "CplusProject/LockController.h"
+#include "../../Environment/LockControllerComponent.h"
 #include "../../Structs/SimonData.h"
 #include "Components/AudioComponent.h"
 #include "LockUI.generated.h"
@@ -26,13 +26,7 @@ public:
 	UButton* hintButton;
 	UPROPERTY(EditAnywhere, Category = "Audio")
 	TArray<USoundBase*> notesAudio;
-
-	UPROPERTY(EditAnywhere)
-	// using TSubclassOf and not pointers because I want to refer to an instance of a blueprint class of a type (these are considered Blueprint classes, not instances of a class for some reason), and not to a class object that was created at runtime
-	// I will be instantiating it in begin play
-	TSubclassOf<ALockController> initLockControllerClass;
 	// ============================= FUNCTIONS =============================
-	void SetLockController(TSubclassOf<ALockController> newClass, bool deletePrevious = true);
 	UFUNCTION()
 	void BindButtons();
 	UFUNCTION()
@@ -46,22 +40,30 @@ public:
 	UFUNCTION()
 	void GiveHint();
 	// returns true if the player was able to play the sequence that is set in the lock data
-	bool CheckSequence(const TArray<Notes>& checkSequence) const;
+	bool CheckSequence();
 	void PlaySequence() const;
 	void OpenLock();
+	void SetLockController(ULockControllerComponent* newController);
 protected:
 	// ============================= FUNCTIONS =============================
 	virtual void NativeConstruct() override;
 private: 
 	// ============================= PROPERTIES =============================
 	UPROPERTY()
-	ALockController* lockController= nullptr;
+	// here is all the data we need to know about the mechanism of the lock that is currently open
+	ULockControllerComponent* lockController = nullptr;
 	UPROPERTY()
 	UAudioComponent* audioComponent= nullptr;
+	UPROPERTY()
+	// to keep track of what the player has pressed so far
+	TArray<Notes> sequence;
 	// ============================= FUNCTIONS =============================
-	void ValidityChecks();
+	bool ValidityChecks(ULockControllerComponent* newController) const;
 	void PlaySound(int8 noteNumber);
 	void ResetSequence();
-	void AddToSequence(int8 noteNumber);
+	void AddToSequence(Notes note);
 	void ShowWrongSequenceUI();
+	void OnButtonClick(Notes note);
+	void DebugSequences();
+
 };

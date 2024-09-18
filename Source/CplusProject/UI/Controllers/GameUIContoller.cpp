@@ -1,4 +1,5 @@
 #include "GameUIContoller.h"
+#include "CplusProject/Interfaces/InteractionInterface.h"
 
 void AGameUIContoller::BeginPlay()
 {
@@ -18,27 +19,34 @@ void AGameUIContoller::BeginPlay()
 	SwitchToPlayerControls();
 }
 
-void AGameUIContoller::UpdateInteractionUI(const FItemData& data)
+void AGameUIContoller::UpdateInteractionUI(const AActor* interactedActor)
 {
+	if (!interactedActor)
+	{
+		UE_LOG(LogTemp, Error, TEXT("Trying to update interaction UI but actor is null. It has been destroyed elsewhere."));
+		return;
+	}
+	const IInteractionInterface* interfacePtr = Cast<IInteractionInterface>(interactedActor);
+	const FItemData& data = interfacePtr->GetItemData();
 	switch (data.itemType)
 	{
-	case ItemType::Interactable:
-	{
-		interactionPanel->UpdateWidget(data.description);
-		if (interactionPanel->GetVisibility() == ESlateVisibility::Collapsed)
+		case ItemType::Interactable:
 		{
-			interactionPanel->SetVisibility(ESlateVisibility::Visible);
+			interactionPanel->UpdateWidget(data.description);
+			if (interactionPanel->GetVisibility() == ESlateVisibility::Collapsed)
+			{
+				interactionPanel->SetVisibility(ESlateVisibility::Visible);
+			}
+			break;
 		}
-		break;
-	}
-	case ItemType::Lock:
-	{
-		OpenLockUI();
-		break;
-	}
+		case ItemType::Lock:
+		{
+			SetLockController(interactedActor->FindComponentByClass<ULockControllerComponent>());
+			OpenLockUI();
+			break;
+		}
 	}
 }
-
 
 void AGameUIContoller::OpenInteractionUI()
 {
@@ -71,6 +79,16 @@ void AGameUIContoller::OpenEncourageInteractUI()
 void AGameUIContoller::CloseEncourageInteractUI()
 {
 	encourageInteractionPanel->SetVisibility(ESlateVisibility::Collapsed);
+}
+
+void AGameUIContoller::SetLockController(ULockControllerComponent* newController)
+{
+	if (!newController)
+	{
+		UE_LOG(LogTemp, Error, TEXT("Trying to update lock component but got nullptr."));
+		return;
+	}
+	lockPanel->SetLockController(newController);
 }
 
 void AGameUIContoller::CloseAll()

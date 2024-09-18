@@ -48,4 +48,24 @@ public:
 	// the unique sequence of notes the device shall play
 	UPROPERTY(EditAnywhere, Category = "Sequence")
 	TArray<Notes> sequence;
+	//UPROPERTY(EditAnywhere, Category = "Data")
 };
+
+// already exists
+/*FORCEINLINE bool operator==(const TArray<Notes>& Array1, const TArray<Notes>& Array2)
+{
+	if (Array1.Num() != Array2.Num())
+	{
+		return false;
+	}
+
+	for (int32 i = 0; i < Array1.Num(); i++)
+	{
+		if (Array1[i] != Array2[i])
+		{
+			return false;
+		}
+	}
+
+	return true;
+}*/

@@ -5,31 +5,35 @@
 void ULockUI::NativeConstruct()
 {
 	Super::NativeConstruct();
-	SetLockController(initLockControllerClass,false);
-	ValidityChecks();
-	BindButtons();
-
 	audioComponent = NewObject<UAudioComponent>(this);
 	audioComponent->RegisterComponentWithWorld(GetWorld());
 }
-void ULockUI::SetLockController(TSubclassOf<ALockController> classType,bool deletePrevious)
+void ULockUI::SetLockController(ULockControllerComponent* newController)
 {
-	checkf(classType, TEXT("lock controller class set on lockUI is empty"));
-	// if there is already something stored in lock controller
-	if (lockController && deletePrevious)
-	{
-		// don't need to exactly manage the memory since it was created using New Object and unreal will do it for me,
-		// but let's mark it explicitly for deletion 
-		lockController->Destroy();
-	}
-	lockController = NewObject<ALockController>(classType);
+	if (!ValidityChecks(newController))
+		return;
+	lockController = newController;
+	BindButtons();
 }
 
-void ULockUI::ValidityChecks()
+bool ULockUI::ValidityChecks(ULockControllerComponent* newController) const 
 {
-	checkf(lockController, TEXT("lock controller is invalid"));
-	checkf(lockController->simonData.sequence.Num()<4, TEXT("sequence array has fewer than 4 elements."));
-	checkf(lockController->nextLevelName.IsEmpty(), TEXT("next level name is empty on lock controller"));
+	if (!newController)
+	{
+		UE_LOG(LogTemp, Error, TEXT("Trying to update lock component but got nullptr."));
+		return false;
+	}
+	if (newController->simonData.sequence.Num() < 4)
+	{
+		UE_LOG(LogTemp, Error, TEXT("sequence array has fewer than 4 elements."));
+		return false;
+	}
+	if (newController->nextLevelName.IsEmpty())
+	{
+		UE_LOG(LogTemp, Error, TEXT("next level name is empty on lock controller"));
+		return false;
+	}
+	return true;
 }
 
 void ULockUI::BindButtons()
@@ -46,45 +50,83 @@ void ULockUI::PlaySound(int8 noteNumber)
 	audioComponent->SetSound(notesAudio[noteNumber+1]);
 	audioComponent->Play();
 }
+void ULockUI::OnButtonClick(Notes note)
+{
+	PlaySound((uint8)note);
+	AddToSequence(note);
+	bool success = CheckSequence();
+	UE_LOG(LogTemp, Warning, TEXT("Success is %s"), success ? TEXT("true") : TEXT("false"));
+	if (success)
+	{
+		OpenLock();
+		UE_LOG(LogTemp, Warning, TEXT("Opening Lock"));
+	}
+}
 
 void ULockUI::RedButton()
 {
-	PlaySound((uint8)lockController->simonData.redNote);
+	OnButtonClick(lockController->simonData.redNote);
 }
 
 void ULockUI::BlueButton()
 {
-	PlaySound((uint8)lockController->simonData.blueNote);
+	OnButtonClick(lockController->simonData.blueNote);
 }
 
 void ULockUI::GreenButton()
 {
-	PlaySound((uint8)lockController->simonData.greenNote);
+	OnButtonClick(lockController->simonData.greenNote);
 }
 
 void ULockUI::YellowButton()
 {
-	PlaySound((uint8)lockController->simonData.yellowNote);
+	OnButtonClick(lockController->simonData.yellowNote);
 }
 
 void ULockUI::GiveHint()
 {
 }
 
-bool ULockUI::CheckSequence(const TArray<Notes>& checkSequence) const
+bool ULockUI::CheckSequence()
 {
-	return false;
+	UE_LOG(LogTemp, Warning, TEXT("len is: %d"), sequence.Num());
+	if(sequence.Num() < lockController->simonData.sequence.Num())
+		return false;
+	if (sequence.Num() > lockController->simonData.sequence.Num())
+	{
+		ResetSequence();
+		ShowWrongSequenceUI();
+		return false;
+	}
+	DebugSequences();
+	return sequence == lockController->simonData.sequence;
 }
 
+void ULockUI::DebugSequences()
+{
+	UE_LOG(LogTemp, Warning, TEXT("Array1 Contents:"));
+	for (Notes note : lockController->simonData.sequence)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("%d"), (int8)note);
+	}
+
+	UE_LOG(LogTemp, Warning, TEXT("Array2 Contents:"));
+	for (Notes note : sequence)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("%d"), (int8)note);
+	}
+}
 void ULockUI::PlaySequence() const
 {
 }
 void ULockUI::ResetSequence()
 {
+	sequence.Reset();
 }
 
-void ULockUI::AddToSequence(int8 noteNumber)
+void ULockUI::AddToSequence(Notes note)
 {
+	sequence.Add(note);
 }
 
 void ULockUI::ShowWrongSequenceUI()
@@ -96,3 +138,4 @@ void ULockUI::OpenLock()
 {
 
 }
+
