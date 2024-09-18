@@ -17,8 +17,9 @@ public:
 	AAInteractableActor();
 	virtual void BeginFocus2D() override;
 	virtual void EndFocus2D() override;
-	virtual const FItemData GetItemData() const override{ return itemData; };
+	virtual const FItemData& GetItemData() const override{ return itemData; };
 	// ============================= PROPERTIES =============================
 	UPROPERTY(editanywhere)
+	// public bc need to set in editor
 	FItemData itemData;
 };

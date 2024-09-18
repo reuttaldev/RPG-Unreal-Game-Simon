@@ -44,13 +44,11 @@ void AGameUIContoller::UpdateInteractionUI(const AActor* interactedActor)
 		case ItemType::OpenDoor:
 		{
 			// change to the scene that we specified in the last opened lock controller 
-			UE_LOG(LogTemp, Error, TEXT("Opendoor"));
 			interactedActor->FindComponentByClass<UDoorOpenComponent>()->OpenDoor();
 			break;
 		}
 		case ItemType::Lock:
 		{
-			UE_LOG(LogTemp, Error, TEXT("Lock"));
 			SetLockController(interactedActor->FindComponentByClass<ULockControllerComponent>());
 			OpenLockUI();
 			break;

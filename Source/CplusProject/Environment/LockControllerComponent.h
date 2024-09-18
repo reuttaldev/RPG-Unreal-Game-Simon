@@ -12,14 +12,10 @@ class CPLUSPROJECT_API ULockControllerComponent : public UActorComponent
 	GENERATED_BODY()
 
 public:
-	ULockControllerComponent();
 	// these members must be public, otherwise I cannot change the values in the editor, which would deify the whole point 
 	UPROPERTY(EditAnywhere, Category = "Lock Data")
 	FSimonData simonData;
 	UPROPERTY(EditAnywhere, Category = "Lock Data")
 	FString nextLevelName;
-protected:
-	virtual void BeginPlay() override;
-public:
 
 };

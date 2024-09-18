@@ -24,5 +24,5 @@ public:
 	// ============================= FUNCTIONS =============================
 	virtual void BeginFocus2D()=0;
 	virtual void EndFocus2D() = 0;
-	virtual const FItemData GetItemData() const = 0;
+	virtual const FItemData& GetItemData() const = 0;
 };
