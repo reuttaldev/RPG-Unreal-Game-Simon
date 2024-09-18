@@ -23,4 +23,6 @@ public:
 	ItemType itemType;
 	UPROPERTY(editanywhere)
 	FText description;
+	UPROPERTY(editanywhere)
+	bool interactable;
 };

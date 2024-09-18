@@ -76,10 +76,12 @@ void AMyPlayerController::OnPossess(APawn* pawn)
 	 // check if the actor we hit implements the interaction interface.
 	 // if it doesn't, we don't care about it. 
 	 if (!OtherActor->GetClass()->ImplementsInterface(UInteractionInterface::StaticClass()))
-	 {
-		 UE_LOG(LogTemp, Warning, TEXT("OtherActor does not implement IInteractionInterface"));
 		 return;
-	 }
+	 // cast OtherActor to the interface type 
+
+	 IInteractionInterface* interfacePtr = Cast<IInteractionInterface>(OtherActor);
+	 if (!interfacePtr->GetItemData().interactable)
+		 return;
 	 lastInteractedActor = OtherActor;
 	 // show popup telling player they can interact with an item
 	 if (!uiController)
@@ -88,8 +90,6 @@ void AMyPlayerController::OnPossess(APawn* pawn)
 		 return;
 	 }
 	 uiController->OpenEncourageInteractUI();
-	 // cast OtherActor to the interface type 
-	 IInteractionInterface* interfacePtr = Cast<IInteractionInterface>(OtherActor);
 	 // do some effect on the object e.g. highlight it 
 	 interfacePtr->BeginFocus2D();
 	 // enable interaction action

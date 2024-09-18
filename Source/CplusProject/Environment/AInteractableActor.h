@@ -21,5 +21,4 @@ public:
 	// ============================= PROPERTIES =============================
 	UPROPERTY(editanywhere)
 	FItemData itemData;
-
 };
