@@ -1,15 +1,22 @@
 #include "LockUI.h"
-#include "../Controllers/GameUIContoller.h"
 #include "Kismet/GameplayStatics.h"
+#include "../Controllers/GameUIContoller.h"
+#include "CplusProject/Environment/DoorOpenComponent.h"
+#include "CplusProject/Player/MyPlayerController.h"
 
 void ULockUI::NativeConstruct()
 {
 	Super::NativeConstruct();
+
 	audioComponent = NewObject<UAudioComponent>(this);
 	audioComponent->RegisterComponentWithWorld(GetWorld());
 	audioComponent->SetVolumeMultiplier(volumeMultiplier);
+
+	uiController= Cast<AGameUIContoller>(GetWorld()->GetFirstPlayerController()->GetHUD());
+
 	hintButton->OnClicked.AddDynamic(this, &ULockUI::PlaySequence);
 	closeButton->OnClicked.AddDynamic(this, &ULockUI::CloseLockUI);
+
 	HideErrorImage();
 }
 void ULockUI::SetLockController(ULockControllerComponent* newController)
@@ -27,9 +34,9 @@ bool ULockUI::ValidityChecks(ULockControllerComponent* newController) const
 		UE_LOG(LogTemp, Error, TEXT("Trying to update lock component but got nullptr."));
 		return false;
 	}
-	if (newController->simonData.sequence.Num() < 4)
+	if (newController->simonData.sequence.Num() ==0 )
 	{
-		UE_LOG(LogTemp, Error, TEXT("sequence array has fewer than 4 elements."));
+		UE_LOG(LogTemp, Error, TEXT("sequence array is empty."));
 		return false;
 	}
 	if (newController->nextLevelName.IsEmpty())
@@ -48,17 +55,16 @@ void ULockUI::BindButtons()
 	yellowButton->OnClicked.AddDynamic(this, &ULockUI::YellowButton);
 }
 
-void ULockUI::PlaySound(int8 noteNumber)
+void ULockUI::PlayNote(int8 noteNumber)
 {
-	audioComponent->SetSound(notesAudio[noteNumber]);
+	audioComponent->SetSound(notesAudio[noteNumber+1]);
 	audioComponent->Play();
 }
 void ULockUI::OnButtonClick(Notes note)
 {
-	PlaySound((uint8)note+1);
+	PlayNote((uint8)note);
 	AddToSequence(note);
 	bool success = CheckSequence();
-	UE_LOG(LogTemp, Warning, TEXT("Success is %s"), success ? TEXT("true") : TEXT("false"));
 	if (success)
 	{
 		OpenLock();
@@ -87,29 +93,24 @@ void ULockUI::YellowButton()
 
 void ULockUI::CloseLockUI()
 {
-	if (APlayerController* playerController = GetWorld()->GetFirstPlayerController())
-	{
-		AHUD* HUD = playerController->GetHUD();
-		AGameUIContoller* gameUIController = Cast<AGameUIContoller>(HUD);
-		if (gameUIController)
-		{
-			gameUIController->CloseLockUI(); 
-		}
-	}
+	if (!uiController)
+		uiController = Cast<AGameUIContoller>(GetWorld()->GetFirstPlayerController()->GetHUD());
+
+	checkf(uiController, TEXT("LockUI could not get a reference to GameUIController, or it was lost "));
+	uiController->CloseLockUI();
 }
 
 bool ULockUI::CheckSequence()
 {
-	if(sequence.Num() < lockController->simonData.sequence.Num())
+	if (sequence.Num() < lockController->simonData.sequence.Num())
 		return false;
-	if (sequence.Num() > lockController->simonData.sequence.Num())
-	{
-		ResetSequence();
-		ShowWrongSequenceUI();
-		return false;
-	}
-	DebugSequences();
-	return sequence == lockController->simonData.sequence;
+	if (sequence == lockController->simonData.sequence)
+		return true;
+	// array is bigger, or equal but not the correct sequence 
+	ResetSequence();
+	ShowWrongSequenceUI();
+	return false;
+	;
 }
 
 void ULockUI::DebugSequences()
@@ -151,6 +152,23 @@ void ULockUI::ShowWrongSequenceUI()
 void ULockUI::OpenLock()
 {
 	UE_LOG(LogTemp, Warning, TEXT("Opening Lock"));
+	// generate an open door class instance in the exact same the locked door was before
+	// the open door class inherits from intractable actor, so player can leave the room
+
+	FVector loc = lockController->GetOwner()->GetActorLocation();
+	FRotator rot = lockController->GetOwner()->GetActorRotation();
+	FString sceneName = lockController->nextLevelName;
+	// destroy it since we left the lock and it is no longer relevant
+	lockController->GetOwner()->Destroy();
+	lockController = nullptr;
+
+	AAInteractableActor* newActor = GetWorld()->SpawnActor<AAInteractableActor>(openDoorActorClass, loc, rot);
+	// get the scene name that was set on the lock controller, which says which scene should be loaded once the lock is open
+	newActor->FindComponentByClass<UDoorOpenComponent>()->SetSceneName(sceneName);
+
+	// tell the UI panel this data is what it needs to interact with now 
+	Cast<AMyPlayerController>(GetWorld()->GetFirstPlayerController())->SetLastInteractedActor(newActor);
+	CloseLockUI(); 
 }
 void ULockUI::ShowErrorImage()
 {
@@ -169,7 +187,8 @@ void ULockUI::PlayNextSound(int i)
 		return; 
 	}
 	UE_LOG(LogTemp, Warning, TEXT("playing index %d"), (int8)i);
-	PlaySound(i);
+	PlayNote((int8)lockController->simonData.sequence[i]);
+	audioComponent->Play();	
 	playNoteDelegate.BindUObject(this, &ULockUI::PlayNextSound, i);
 	GetWorld()->GetTimerManager().SetTimer(playTimerHandle, playNoteDelegate, timeBetweenNotes, false);
 }

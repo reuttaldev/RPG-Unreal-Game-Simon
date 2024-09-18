@@ -7,9 +7,15 @@ AMyPlayerController::AMyPlayerController()
 	isInteracting = false;
 }
 
-void AMyPlayerController::BeginPlay()
+void AMyPlayerController::SetLastInteractedActor(AActor* actor)
 {
+	if (!actor)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("bad actor pointer"));
 
+	}
+	lastInteractedActor = actor;
+	UE_LOG(LogTemp, Warning, TEXT("Last Interacted Actor Name: %s"), *lastInteractedActor->GetName());
 }
 
 // on enable and on disable. pawn = player. This gets called once the controller gets connected to the player that was spawned.
@@ -83,10 +89,11 @@ void AMyPlayerController::OnPossess(APawn* pawn)
 	 if (!interfacePtr->GetItemData().interactable)
 		 return;
 	 lastInteractedActor = OtherActor;
+	 UE_LOG(LogTemp, Warning, TEXT("Last Interacted Actor Name: %s"), *lastInteractedActor->GetName());
 	 // show popup telling player they can interact with an item
 	 if (!uiController)
 	 {
-		 UE_LOG(LogTemp, Warning, TEXT("OtherActor does not implement IInteractionInterface"));
+		 UE_LOG(LogTemp, Warning, TEXT("no UI controller on player controller"));
 		 return;
 	 }
 	 uiController->OpenEncourageInteractUI();
@@ -99,6 +106,11 @@ void AMyPlayerController::OnPossess(APawn* pawn)
  void AMyPlayerController::OverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
  {
 	 // close popup telling player they can interact with an item
+	 if (!uiController)
+	 {
+		 UE_LOG(LogTemp, Warning, TEXT("no UI controller on player controller"));
+		 return;
+	 }
 	 uiController->CloseAll();
 	 //disable effect on the object
      Cast<IInteractionInterface>(OtherActor)->EndFocus2D();
@@ -111,6 +123,11 @@ void AMyPlayerController::OnPossess(APawn* pawn)
  {
 	 if (!canInteract)
 		 return; // we have nothing to interact with
+	 if (!uiController)
+	 {
+		 UE_LOG(LogTemp, Warning, TEXT("no UI controller on player controller"));
+		 return;
+	 }
 	 // if we press E while the panels are already open, close them
 	 if (isInteracting)
 	 {
@@ -124,4 +141,3 @@ void AMyPlayerController::OnPossess(APawn* pawn)
 	 // open interaction panel with relevant text
 	 uiController->UpdateInteractionUI(lastInteractedActor);
  }
-

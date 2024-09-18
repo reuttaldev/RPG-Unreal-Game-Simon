@@ -4,11 +4,12 @@
 #include "Blueprint/UserWidget.h"
 #include "Components/Button.h"
 #include "../../Environment/LockControllerComponent.h"
+#include "../../Environment/AInteractableActor.h"
 #include "../../Structs/SimonData.h"
 #include "Components/AudioComponent.h"
 #include "Components/Image.h"
 #include "LockUI.generated.h"
-
+ 
 UCLASS()
 class CPLUSPROJECT_API ULockUI : public UUserWidget
 {
@@ -37,6 +38,9 @@ public:
 	float timeBetweenNotes = 0.7f;
 	UPROPERTY(EditAnywhere, Category = "Audio")
 	float volumeMultiplier = 2;
+	// ============================= PROPERTIES =============================
+	UPROPERTY(EditAnywhere, Category = "Panels")
+	TSubclassOf<AAInteractableActor> openDoorActorClass;
 	// ============================= FUNCTIONS =============================
 	UFUNCTION()
 	void BindButtons();
@@ -69,12 +73,14 @@ private:
 	UPROPERTY()
 	// to keep track of what the player has pressed so far
 	TArray<Notes> sequence;
+	UPROPERTY()
+	class AGameUIContoller* uiController; // circular dependencies
 	FTimerHandle flashTimerHandle;
 	FTimerHandle playTimerHandle;
 	FTimerDelegate playNoteDelegate;
 	// ============================= FUNCTIONS =============================
 	bool ValidityChecks(ULockControllerComponent* newController) const;
-	void PlaySound(int8 noteNumber);
+	void PlayNote(int8 noteNumber);
 	void ResetSequence();
 	void AddToSequence(Notes note);
 	void ShowWrongSequenceUI();

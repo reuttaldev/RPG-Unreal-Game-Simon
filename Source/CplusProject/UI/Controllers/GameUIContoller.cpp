@@ -1,5 +1,6 @@
 #include "GameUIContoller.h"
 #include "CplusProject/Interfaces/InteractionInterface.h"
+#include "CplusProject/Environment/DoorOpenComponent.h"
 
 void AGameUIContoller::BeginPlay()
 {
@@ -39,8 +40,17 @@ void AGameUIContoller::UpdateInteractionUI(const AActor* interactedActor)
 			}
 			break;
 		}
+		// the order here matters. In case two components are found
+		case ItemType::OpenDoor:
+		{
+			// change to the scene that we specified in the last opened lock controller 
+			UE_LOG(LogTemp, Error, TEXT("Opendoor"));
+			interactedActor->FindComponentByClass<UDoorOpenComponent>()->OpenDoor();
+			break;
+		}
 		case ItemType::Lock:
 		{
+			UE_LOG(LogTemp, Error, TEXT("Lock"));
 			SetLockController(interactedActor->FindComponentByClass<ULockControllerComponent>());
 			OpenLockUI();
 			break;
@@ -63,6 +73,7 @@ void AGameUIContoller::OpenLockUI()
 	inputModeUI.SetWidgetToFocus(lockPanel->TakeWidget());
 	SwitchToUIControls();
 	lockPanel->SetVisibility(ESlateVisibility::Visible);
+	lockPanel->PlaySequence();
 }
 
 void AGameUIContoller::CloseLockUI()

@@ -8,6 +8,7 @@ enum class ItemType : uint8
 	Interactable ,
 	Static,
 	Lock,
+	OpenDoor,
 	// for further development use
 	NPC,
 	Pickup,
