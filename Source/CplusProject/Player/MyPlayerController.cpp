@@ -58,8 +58,8 @@ void AMyPlayerController::OnPossess(APawn* pawn)
 	 //Unreal Engine classes use an F prefix for all their structures and classes.
 	 const FVector2D movementVector = inputActionValue.Get<FVector2D>();
 	 //execute movement. AddMovementInput is inhereted from 
-	 playerPtr->AddMovementInput(playerPtr->GetActorForwardVector(), movementVector.X);
-	 playerPtr->AddMovementInput(playerPtr->GetActorRightVector(), movementVector.Y);
+	 playerPtr->AddMovementInput(playerPtr->GetActorForwardVector(), movementVector.X * movementSpeed);
+	 playerPtr->AddMovementInput(playerPtr->GetActorRightVector(), movementVector.Y * movementSpeed);
 	 // this will be used in the animation
 	 direction.X = movementVector.X;
 	 direction.Y = -movementVector.Y;
