@@ -1,4 +1,4 @@
-// Unlike C++, in unreal you do NOT have to implement all functions in order to implement an interface. 
+/// Unlike C++, in unreal you do NOT have to implement all functions in order to implement an interface. 
 
 #pragma once
 
@@ -7,7 +7,7 @@
 #include "../Structs/ItemData.h"
 #include "InteractionInterface.generated.h"
 
-// This class does not need to be modified.
+/// This class does not need to be modified.
 UINTERFACE(MinimalAPI)
 class UInteractionInterface : public UInterface
 {

@@ -12,7 +12,8 @@ class CPLUSPROJECT_API UDoorOpenComponent : public UActorComponent
 
 private:	
 	UPROPERTY()
-	FString nextScene; // the name of the scene we need to open when we interact with a open door class instance 
+	/// the name of the scene we need to open when we interact with a open door class instance 
+	FString nextScene;
 
 public:
 	inline void OpenDoor() 

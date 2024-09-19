@@ -1,5 +1,3 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "CoreMinimal.h"
@@ -20,6 +18,6 @@ public:
 	virtual const FItemData& GetItemData() const override{ return itemData; };
 	// ============================= PROPERTIES =============================
 	UPROPERTY(editanywhere)
-	// public bc need to set in editor
+	/// public because I need to set the value in editor
 	FItemData itemData;
 };

@@ -33,7 +33,7 @@ public:
 	void SetLastInteractedActor(AActor* acotor);
 protected:
 	// ============================= FUNCTIONS =============================
-	// on enable and on disable. pawn = player. 
+	/// on enable and on disable. pawn = player. 
 	virtual void OnPossess(APawn* pawn) override;
 	virtual void OnUnPossess() override;
 
@@ -51,9 +51,9 @@ private:
 	UPROPERTY()
 	AActor* lastInteractedActor = nullptr;
 	float movementSpeed = 0.8f;
-	// this is set to true when we are in close proximity of an intractable object
+	/// this is set to true when we are in close proximity of an intractable object
 	bool canInteract;
-	// are we currently interacting with something?
+	/// are we currently interacting with something?
 	bool isInteracting;
 // ============================= FUNCTIONS =============================
 	//will be called on collision enter. here I will check if I hit anything that inherits from InteractionInterface
@@ -61,7 +61,7 @@ private:
 	void OverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 	UFUNCTION()
 	void OverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
-	// called when we collided with an item which inherits from InteractionInterface, and the player pressed the interact action (E, Enter, etc
+	/// called when we collided with an item which inherits from InteractionInterface, and the player pressed the interact action (E, Enter, etc
 	void HandleInteractInput();
 	void HandleMoveInput(const FInputActionValue& inputActionValue);
 };

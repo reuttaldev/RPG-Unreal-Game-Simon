@@ -1,3 +1,5 @@
+/** @mainpage
+
 This project is a 2D RPG-style video game, developed using Unreal Engine 5.4.2 and C++.
 
 The concept revolves around a music-based puzzle game in 2D, drawing inspiration from the childhood classic Simon.
@@ -14,3 +16,4 @@ The game's difficulty progressively increases, introducing variations such as ch
 
 To run the game open it in the Unreal Engine 5.4 editor, or email reutgaming@gmail.com for a platform-specific build. 
 The scripts are located in the Source folder. 
+*/

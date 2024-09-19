@@ -29,7 +29,7 @@ private:
 
     UPROPERTY(EditAnywhere, Category = "Flicker Settings")
     float flickerBreak;
-    //timer 
+    ///timer 
     float timePassed;
     // ============================= FUNCTIONS =============================
     void FlickerLight();

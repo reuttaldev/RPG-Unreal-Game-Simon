@@ -12,7 +12,7 @@ class CPLUSPROJECT_API ULockControllerComponent : public UActorComponent
 	GENERATED_BODY()
 
 public:
-	// these members must be public, otherwise I cannot change the values in the editor, which would deify the whole point 
+	/// these members must be public, otherwise I cannot change the values in the editor, which would deify the whole point 
 	UPROPERTY(EditAnywhere, Category = "Lock Data")
 	FSimonData simonData;
 	UPROPERTY(EditAnywhere, Category = "Lock Data")

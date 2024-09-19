@@ -1,5 +1,3 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "CoreMinimal.h"
@@ -7,9 +5,6 @@
 #include <Components/TextBlock.h>
 #include "InteractionUI.generated.h"
 
-/**
- * 
- */
 UCLASS()
 class CPLUSPROJECT_API UInteractionUI : public UUserWidget
 {
