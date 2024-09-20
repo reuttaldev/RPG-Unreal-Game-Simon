@@ -17,7 +17,8 @@ void ULockUI::NativeConstruct()
 	hintButton->OnClicked.AddDynamic(this, &ULockUI::PlaySequence);
 	closeButton->OnClicked.AddDynamic(this, &ULockUI::CloseLockUI);
 
-	HideErrorImage();
+	HideImage(errorImage);
+	HideHightlightEffect();
 }
 void ULockUI::SetLockController(ULockControllerComponent* newController)
 {
@@ -27,7 +28,7 @@ void ULockUI::SetLockController(ULockControllerComponent* newController)
 	BindButtons();
 }
 
-bool ULockUI::ValidityChecks(ULockControllerComponent* newController) const 
+bool ULockUI::ValidityChecks(const ULockControllerComponent* newController) const 
 {
 	if (!newController)
 	{
@@ -44,6 +45,12 @@ bool ULockUI::ValidityChecks(ULockControllerComponent* newController) const
 		UE_LOG(LogTemp, Error, TEXT("next level name is empty on lock controller"));
 		return false;
 	}
+	if (newController->simonData.mapColorToNote.Num() != 4)
+	{
+
+		UE_LOG(LogTemp, Error, TEXT("map color to note is not defined correctly"));
+		return false;
+	}
 	return true;
 }
 
@@ -55,15 +62,46 @@ void ULockUI::BindButtons()
 	yellowButton->OnClicked.AddDynamic(this, &ULockUI::YellowButton);
 }
 
-void ULockUI::PlayNote(int8 noteNumber)
+void ULockUI::PlayNote(const int8 noteNumber)
 {
 	audioComponent->SetSound(notesAudio[noteNumber+1]);
 	audioComponent->Play();
 }
-void ULockUI::OnButtonClick(Notes note)
+void ULockUI::ShowHighlightEffect(const ButtonColors color)
 {
-	PlayNote((uint8)note);
-	AddToSequence(note);
+	switch (color)
+	{
+	case ButtonColors::Yellow:
+
+		ShowImage(yellowHighlightImage, true, showButtonHightlightTime);
+		break;
+	case ButtonColors::Red:
+
+		ShowImage(redHighlightImage, true, showButtonHightlightTime);
+		break;
+	case ButtonColors::Green:
+
+		ShowImage(greenHighlightImage, true, showButtonHightlightTime);
+		break;
+	case ButtonColors::Blue:
+
+		ShowImage(blueHighlightImage, true, showButtonHightlightTime);
+		break;
+	}
+}
+void ULockUI::HideHightlightEffect()
+{
+	HideImage(redHighlightImage);
+	HideImage(blueHighlightImage);
+	HideImage(yellowHighlightImage);
+	HideImage(greenHighlightImage);
+}
+void ULockUI::OnButtonClick(ButtonColors color)
+{
+	Notes noteToPlay = lockController->simonData.mapColorToNote[color];
+	PlayNote((uint8)noteToPlay);
+	ShowHighlightEffect(color);
+	AddToSequence(noteToPlay);
 	bool success = CheckSequence();
 	if (success)
 	{
@@ -73,26 +111,27 @@ void ULockUI::OnButtonClick(Notes note)
 
 void ULockUI::RedButton()
 {
-	OnButtonClick(lockController->simonData.redNote);
+	OnButtonClick(ButtonColors::Red);
 }
 
 void ULockUI::BlueButton()
 {
-	OnButtonClick(lockController->simonData.blueNote);
+	OnButtonClick(ButtonColors::Blue);
 }
 
 void ULockUI::GreenButton()
 {
-	OnButtonClick(lockController->simonData.greenNote);
+	OnButtonClick(ButtonColors::Green);
 }
 
 void ULockUI::YellowButton()
 {
-	OnButtonClick(lockController->simonData.yellowNote);
+	OnButtonClick(ButtonColors::Yellow);
 }
 
 void ULockUI::CloseLockUI()
 {
+	ResetSequence();
 	if (!uiController)
 		uiController = Cast<AGameUIContoller>(GetWorld()->GetFirstPlayerController()->GetHUD());
 
@@ -106,11 +145,10 @@ bool ULockUI::CheckSequence()
 		return false;
 	if (sequence == lockController->simonData.sequence)
 		return true;
-	// array is bigger, or equal but not the correct sequence 
+	/// array is bigger, or equal but not the correct sequence 
 	ResetSequence();
 	ShowWrongSequenceUI();
 	return false;
-	;
 }
 
 void ULockUI::DebugSequences()
@@ -127,6 +165,23 @@ void ULockUI::DebugSequences()
 		UE_LOG(LogTemp, Warning, TEXT("%d"), (int8)note);
 	}
 }
+void ULockUI::ShowImage(UImage* image, bool hideAutomatically, float delay)
+{
+	image->SetVisibility(ESlateVisibility::Visible);
+	if (!hideAutomatically)
+		return; 
+
+	GetWorld()->GetTimerManager().SetTimer(imageTimerHandle, 
+		[this, image]()
+		{
+			this->HideImage(image);
+		},
+		delay, false);
+}
+void ULockUI::HideImage(UImage* image) 
+{
+	image->SetVisibility(ESlateVisibility::Collapsed);
+}
 void ULockUI::PlaySequence() 
 {
 	PlayNextSound(-1);
@@ -134,6 +189,7 @@ void ULockUI::PlaySequence()
 void ULockUI::ResetSequence()
 {
 	sequence.Reset();
+	HideHightlightEffect();
 }
 
 void ULockUI::AddToSequence(Notes note)
@@ -145,49 +201,60 @@ void ULockUI::ShowWrongSequenceUI()
 {
 	audioComponent->SetSound(errorSound);
 	audioComponent->Play();
-	ShowErrorImage();
-	GetWorld()->GetTimerManager().SetTimer(flashTimerHandle, this, &ULockUI::HideErrorImage, timeBetweenNotes, false);
+	ShowImage(errorImage,true, showErrorTime);
 }
 
 void ULockUI::OpenLock()
 {
 	UE_LOG(LogTemp, Warning, TEXT("Opening Lock"));
-	// generate an open door class instance in the exact same the locked door was before
-	// the open door class inherits from intractable actor, so player can leave the room
+	/// generate an open door class instance in the exact same the locked door was before
+	/// the open door class inherits from intractable actor, so player can leave the room
 
 	FVector loc = lockController->GetOwner()->GetActorLocation();
 	FRotator rot = lockController->GetOwner()->GetActorRotation();
 	FString sceneName = lockController->nextLevelName;
-	// destroy it since we left the lock and it is no longer relevant
+	/// destroy it since we left the lock and it is no longer relevant
 	lockController->GetOwner()->Destroy();
 	lockController = nullptr;
 
 	AAInteractableActor* newActor = GetWorld()->SpawnActor<AAInteractableActor>(openDoorActorClass, loc, rot);
-	// get the scene name that was set on the lock controller, which says which scene should be loaded once the lock is open
+	/// get the scene name that was set on the lock controller, which says which scene should be loaded once the lock is open
 	newActor->FindComponentByClass<UDoorOpenComponent>()->SetSceneName(sceneName);
 
-	// tell the UI panel this data is what it needs to interact with now 
+	/// tell the UI panel this data is what it needs to interact with now 
 	Cast<AMyPlayerController>(GetWorld()->GetFirstPlayerController())->SetLastInteractedActor(newActor);
 	CloseLockUI(); 
 }
-void ULockUI::ShowErrorImage()
+ButtonColors ULockUI::FindColorByNote(Notes note) const
 {
-	errorImage	->SetVisibility(ESlateVisibility::Visible);
+	for (const TPair<ButtonColors, Notes>& pair : lockController->simonData.mapColorToNote)
+	{
+		if (pair.Value == note)
+		{
+			return pair.Key;
+		}
+	}
+	return ButtonColors::None;
 }
-void ULockUI::HideErrorImage()
-{
-	errorImage	->SetVisibility(ESlateVisibility::Collapsed);
-}
-
 void ULockUI::PlayNextSound(int i)
 {
 	i++;
+	// recursion base case
 	if (i >= lockController->simonData.sequence.Num())
 	{
 		return; 
 	}
-	UE_LOG(LogTemp, Warning, TEXT("playing index %d"), (int8)i);
-	PlayNote((int8)lockController->simonData.sequence[i]);
+
+	Notes noteToPlay = lockController->simonData.sequence[i];
+	// find which button color we need, based on the key we need to play and the map we have
+	ButtonColors colorToShow = FindColorByNote(noteToPlay);
+	if (colorToShow == ButtonColors::None)
+	{
+		UE_LOG(LogTemp, Error, TEXT("Note %d does not have a button color, could not display highlight"), (int8)noteToPlay);
+		return;
+	}
+	ShowHighlightEffect(colorToShow);
+	PlayNote((int8)noteToPlay);
 	audioComponent->Play();	
 	playNoteDelegate.BindUObject(this, &ULockUI::PlayNextSound, i);
 	GetWorld()->GetTimerManager().SetTimer(playTimerHandle, playNoteDelegate, timeBetweenNotes, false);

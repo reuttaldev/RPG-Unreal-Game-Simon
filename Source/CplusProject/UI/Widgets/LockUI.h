@@ -30,12 +30,24 @@ public:
 	UButton* closeButton;
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget), Category = "UI Binding")
 	UImage* errorImage;
+	UPROPERTY(VisibleAnywhere, meta = (BindWidget), Category = "UI Binding")
+	UImage* greenHighlightImage;
+	UPROPERTY(VisibleAnywhere, meta = (BindWidget), Category = "UI Binding")
+	UImage* blueHighlightImage;
+	UPROPERTY(VisibleAnywhere, meta = (BindWidget), Category = "UI Binding")
+	UImage* yellowHighlightImage;
+	UPROPERTY(VisibleAnywhere, meta = (BindWidget), Category = "UI Binding")
+	UImage* redHighlightImage;
 	UPROPERTY(EditAnywhere, Category = "Audio")
 	TArray<USoundBase*> notesAudio;
 	UPROPERTY(EditAnywhere, Category = "Audio")
 	USoundBase* errorSound;
-	UPROPERTY(EditAnywhere, Category = "Audio")
+	UPROPERTY(EditAnywhere, Category = "Visuals")
 	float timeBetweenNotes = 0.7f;
+	UPROPERTY(EditAnywhere, Category = "Visuals")
+	float showButtonHightlightTime = 0.7f;
+	UPROPERTY(EditAnywhere, Category = "Visuals")
+	float showErrorTime = 1.3f;
 	UPROPERTY(EditAnywhere, Category = "Audio")
 	float volumeMultiplier = 2;
 	// ============================= PROPERTIES =============================
@@ -75,18 +87,21 @@ private:
 	TArray<Notes> sequence;
 	UPROPERTY()
 	class AGameUIContoller* uiController; // circular dependencies
-	FTimerHandle flashTimerHandle;
+	FTimerHandle imageTimerHandle;
 	FTimerHandle playTimerHandle;
 	FTimerDelegate playNoteDelegate;
 	// ============================= FUNCTIONS =============================
-	bool ValidityChecks(ULockControllerComponent* newController) const;
+	bool ValidityChecks(const ULockControllerComponent* newController) const;
 	void PlayNote(int8 noteNumber);
 	void ResetSequence();
 	void AddToSequence(Notes note);
 	void ShowWrongSequenceUI();
-	void OnButtonClick(Notes note);
+	void OnButtonClick(ButtonColors color);
 	void DebugSequences();
-	void ShowErrorImage();
-	void HideErrorImage();
+	void ShowImage( UImage* image, bool hideAutomatically = true, float delay = 0.5f);
+	void HideImage( UImage* image);
 	void PlayNextSound(int i);
+	void ShowHighlightEffect(ButtonColors color);
+	void HideHightlightEffect();
+	ButtonColors FindColorByNote(Notes note) const;
 };

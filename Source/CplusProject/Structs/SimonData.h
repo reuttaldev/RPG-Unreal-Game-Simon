@@ -3,12 +3,13 @@
 #include "SimonData.generated.h"  
 
 UENUM()
-enum class Buttons : uint8
+enum class ButtonColors : uint8
 {
 	Red,
 	Green,
 	Blue,
-	Yellow
+	Yellow,
+	None
 };
 UENUM()
 enum class Notes : uint8
@@ -33,18 +34,10 @@ struct CPLUSPROJECT_API FSimonData
 	GENERATED_BODY();
 public:
 	FSimonData();
-
 	/// indicates which node will sound when a button is pressed
 	/// audios that should be heard when each button is pressed
 	UPROPERTY(EditAnywhere, Category = "Notes")
-	Notes redNote;
-	UPROPERTY(EditAnywhere, Category = "Notes")
-	Notes blueNote;
-	UPROPERTY(EditAnywhere, Category = "Notes")
-	Notes greenNote;
-	UPROPERTY(EditAnywhere, Category = "Notes")
-	Notes yellowNote;
-
+	TMap<ButtonColors, Notes> mapColorToNote;
 	/// the unique sequence of notes the device shall play
 	UPROPERTY(EditAnywhere, Category = "Sequence")
 	TArray<Notes> sequence;
