@@ -49,7 +49,7 @@ public:
 	UPROPERTY(EditAnywhere, Category = "Visuals")
 	float showErrorTime = 1.3f;
 	UPROPERTY(EditAnywhere, Category = "Audio")
-	float volumeMultiplier = 2;
+	float volumeMultiplier = 1.5;
 	// ============================= PROPERTIES =============================
 	UPROPERTY(EditAnywhere, Category = "Panels")
 	TSubclassOf<AAInteractableActor> openDoorActorClass;
@@ -65,12 +65,18 @@ public:
 	UFUNCTION()
 	void YellowButton() ;
 	UFUNCTION()
-	void CloseLockUI();
+	/// when the UI panel gets opened
+	void OnOpen();
+	UFUNCTION()
+	/// when the player successfully repeated the sequence
+	void OnUnlocked();
+	UFUNCTION()
+	/// when the UI panel gets closed
+	void OnClose();
 	UFUNCTION()
 	void PlaySequence();
 	/// returns true if the player was able to play the sequence that is set in the lock data
 	bool CheckSequence();
-	void OpenLock();
 	void SetLockController(ULockControllerComponent* newController);
 protected:
 	// ============================= FUNCTIONS =============================

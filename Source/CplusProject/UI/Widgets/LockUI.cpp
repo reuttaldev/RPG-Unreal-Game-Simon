@@ -14,18 +14,17 @@ void ULockUI::NativeConstruct()
 
 	uiController= Cast<AGameUIContoller>(GetWorld()->GetFirstPlayerController()->GetHUD());
 
-	hintButton->OnClicked.AddDynamic(this, &ULockUI::PlaySequence);
-	closeButton->OnClicked.AddDynamic(this, &ULockUI::CloseLockUI);
+	BindButtons();
 
 	HideImage(errorImage);
 	HideHightlightEffect();
 }
+
 void ULockUI::SetLockController(ULockControllerComponent* newController)
 {
 	if (!ValidityChecks(newController))
 		return;
 	lockController = newController;
-	BindButtons();
 }
 
 bool ULockUI::ValidityChecks(const ULockControllerComponent* newController) const 
@@ -47,7 +46,6 @@ bool ULockUI::ValidityChecks(const ULockControllerComponent* newController) cons
 	}
 	if (newController->simonData.mapColorToNote.Num() != 4)
 	{
-
 		UE_LOG(LogTemp, Error, TEXT("map color to note is not defined correctly"));
 		return false;
 	}
@@ -56,6 +54,9 @@ bool ULockUI::ValidityChecks(const ULockControllerComponent* newController) cons
 
 void ULockUI::BindButtons()
 {
+	hintButton->OnClicked.AddDynamic(this, &ULockUI::PlaySequence);
+	closeButton->OnClicked.AddDynamic(this, &ULockUI::OnClose);
+
 	redButton->OnClicked.AddDynamic(this, &ULockUI::RedButton);
 	blueButton->OnClicked.AddDynamic(this, &ULockUI::BlueButton);
 	greenButton->OnClicked.AddDynamic(this, &ULockUI::GreenButton);
@@ -105,7 +106,7 @@ void ULockUI::OnButtonClick(ButtonColors color)
 	bool success = CheckSequence();
 	if (success)
 	{
-		OpenLock();
+		OnUnlocked();
 	}
 }
 
@@ -128,9 +129,15 @@ void ULockUI::YellowButton()
 {
 	OnButtonClick(ButtonColors::Yellow);
 }
-
-void ULockUI::CloseLockUI()
+void ULockUI::OnOpen()
 {
+	if (!ValidityChecks(lockController))
+		return; 
+	PlaySequence();
+}
+void ULockUI::OnClose()
+{
+	lockController = nullptr;
 	ResetSequence();
 	if (!uiController)
 		uiController = Cast<AGameUIContoller>(GetWorld()->GetFirstPlayerController()->GetHUD());
@@ -184,6 +191,8 @@ void ULockUI::HideImage(UImage* image)
 }
 void ULockUI::PlaySequence() 
 {
+	UE_LOG(LogTemp, Warning, TEXT("playing sequence"));
+
 	PlayNextSound(-1);
 }
 void ULockUI::ResetSequence()
@@ -204,11 +213,10 @@ void ULockUI::ShowWrongSequenceUI()
 	ShowImage(errorImage,true, showErrorTime);
 }
 
-void ULockUI::OpenLock()
+/// generate an open door class instance in the exact same the locked door was before
+/// the open door class inherits from intractable actor, so player can leave the room
+void ULockUI::OnUnlocked()
 {
-	UE_LOG(LogTemp, Warning, TEXT("Opening Lock"));
-	/// generate an open door class instance in the exact same the locked door was before
-	/// the open door class inherits from intractable actor, so player can leave the room
 
 	FVector loc = lockController->GetOwner()->GetActorLocation();
 	FRotator rot = lockController->GetOwner()->GetActorRotation();
@@ -223,7 +231,7 @@ void ULockUI::OpenLock()
 
 	/// tell the UI panel this data is what it needs to interact with now 
 	Cast<AMyPlayerController>(GetWorld()->GetFirstPlayerController())->SetLastInteractedActor(newActor);
-	CloseLockUI(); 
+	OnClose(); 
 }
 ButtonColors ULockUI::FindColorByNote(Notes note) const
 {

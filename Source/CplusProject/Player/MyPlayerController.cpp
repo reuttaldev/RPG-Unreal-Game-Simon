@@ -89,7 +89,6 @@ void AMyPlayerController::OnPossess(APawn* pawn)
 	 if (!interfacePtr->GetItemData().interactable)
 		 return;
 	 lastInteractedActor = OtherActor;
-	 UE_LOG(LogTemp, Warning, TEXT("Last Interacted Actor Name: %s"), *lastInteractedActor->GetName());
 	 // show popup telling player they can interact with an item
 	 if (!uiController)
 	 {
@@ -117,6 +116,7 @@ void AMyPlayerController::OnPossess(APawn* pawn)
 	 // disable interaction action
 	 canInteract = false;
 	 isInteracting = false;
+	 lastInteractedActor = nullptr;
  }
  
  void AMyPlayerController::HandleInteractInput()
@@ -126,6 +126,11 @@ void AMyPlayerController::OnPossess(APawn* pawn)
 	 if (!uiController)
 	 {
 		 UE_LOG(LogTemp, Warning, TEXT("no UI controller on player controller"));
+		 return;
+	 }
+	 if (!lastInteractedActor)
+	 {
+		 UE_LOG(LogTemp, Warning, TEXT("no last interacted actor on player controller"));
 		 return;
 	 }
 	 // if we press E while the panels are already open, close them

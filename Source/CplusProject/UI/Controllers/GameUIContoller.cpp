@@ -71,7 +71,7 @@ void AGameUIContoller::OpenLockUI()
 	inputModeUI.SetWidgetToFocus(lockPanel->TakeWidget());
 	SwitchToUIControls();
 	lockPanel->SetVisibility(ESlateVisibility::Visible);
-	lockPanel->PlaySequence();
+	lockPanel->OnOpen();
 }
 
 void AGameUIContoller::CloseLockUI()
