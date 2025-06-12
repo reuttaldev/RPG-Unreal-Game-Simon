@@ -1,4 +1,6 @@
-/** @mainpage
+To run the game open it in the Unreal Engine 5.4 editor, or email reutgaming@gmail.com for a platform-specific build. 
+
+Code documentation can be found at refman.pdf
 
 This project is a 2D RPG-style video game, developed using Unreal Engine 5.4.2 and C++.
 
@@ -14,6 +16,4 @@ For those struggling, a "hint" button is available which replays the melody.
 
 The game's difficulty progressively increases, introducing variations such as changing each note button (so players will have to rely on their listening skills and not visual memory), altering the melody's scale, or adjusting the number of notes to be played. 
 
-To run the game open it in the Unreal Engine 5.4 editor, or email reutgaming@gmail.com for a platform-specific build. 
 The scripts are located in the Source folder. 
-*/
