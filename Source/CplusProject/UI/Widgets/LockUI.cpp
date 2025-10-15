@@ -54,7 +54,7 @@ bool ULockUI::ValidityChecks(const ULockControllerComponent* newController) cons
 
 void ULockUI::BindButtons()
 {
-	hintButton->OnClicked.AddDynamic(this, &ULockUI::PlaySequence);
+	hintButton->OnClicked.AddDynamic(this, &ULockUI::GiveHint);
 	closeButton->OnClicked.AddDynamic(this, &ULockUI::OnClose);
 
 	redButton->OnClicked.AddDynamic(this, &ULockUI::RedButton);
@@ -65,7 +65,7 @@ void ULockUI::BindButtons()
 
 void ULockUI::PlayNote(const int8 noteNumber)
 {
-	audioComponent->SetSound(notesAudio[noteNumber+1]);
+	audioComponent->SetSound(notesAudio[noteNumber]);
 	audioComponent->Play();
 }
 void ULockUI::ShowHighlightEffect(const ButtonColors color)
@@ -128,6 +128,11 @@ void ULockUI::GreenButton()
 void ULockUI::YellowButton()
 {
 	OnButtonClick(ButtonColors::Yellow);
+}
+void ULockUI::GiveHint()
+{
+	ResetSequence();
+	PlaySequence();
 }
 void ULockUI::OnOpen()
 {

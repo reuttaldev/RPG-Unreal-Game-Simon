@@ -1,0 +1,56 @@
+\doxysection{Game\+UIContoller.\+h}
+\hypertarget{_game_u_i_contoller_8h_source}{}\label{_game_u_i_contoller_8h_source}\index{Source/CplusProject/UI/Controllers/GameUIContoller.h@{Source/CplusProject/UI/Controllers/GameUIContoller.h}}
+\mbox{\hyperlink{_game_u_i_contoller_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}GameFramework/HUD.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_lock_u_i_8h}{CplusProject/UI/Widgets/LockUI.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_item_data_8h}{CplusProject/Structs/ItemData.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_interaction_u_i_8h}{CplusProject/UI/Widgets/InteractionUI.h}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_u_i_controller_8h}{UIController.h}}"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}GameUIContoller.generated.h"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ UCLASS()}
+\DoxyCodeLine{00012\ class\ CPLUSPROJECT\_API\ \mbox{\hyperlink{class_a_game_u_i_contoller}{AGameUIContoller}}\ :\ public\ \mbox{\hyperlink{class_a_u_i_controller}{AUIController}}}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{comment}{//\ =============================\ PROPERTIES\ =============================}}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{comment}{//\ using\ TSubclassOf\ and\ not\ pointers\ because\ I\ want\ to\ refer\ to\ an\ instance\ of\ a\ blueprint\ class\ of\ a\ type\ (these\ are\ considered\ Blueprint\ classes,\ not\ instances\ of\ a\ class\ for\ some\ reason),\ and\ not\ to\ a\ class\ object\ that\ was\ created\ at\ runtime}}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{comment}{//\ I\ will\ be\ instantiating\ it\ in\ begin\ play}}
+\DoxyCodeLine{00019\ \ \ \ \ UPROPERTY(EditDefaultsOnly,\ Category\ =\ \textcolor{stringliteral}{"{}Panels"{}})}
+\DoxyCodeLine{00020\ \ \ \ \ TSubclassOf<\mbox{\hyperlink{class_u_interaction_u_i}{UInteractionUI}}>\ interactionUIClass;}
+\DoxyCodeLine{00021\ \ \ \ \ UPROPERTY(EditDefaultsOnly,\ Category\ =\ "{}Panels"{})}
+\DoxyCodeLine{00022\ \ \ \ \ TSubclassOf<UUserWidget>\ enourageInteractionUIClass;}
+\DoxyCodeLine{00023\ \ \ \ \ UPROPERTY(EditDefaultsOnly,\ Category\ =\ "{}Panels"{})}
+\DoxyCodeLine{00024\ \ \ \ \ TSubclassOf<\mbox{\hyperlink{class_u_lock_u_i}{ULockUI}}>\ lockUIClass;}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//\ =============================\ FUNCTIONS\ =============================}}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ UpdateInteractionUI(const\ AActor*\ interactedActor);}
+\DoxyCodeLine{00028\ \ \ \ \ virtual\ \textcolor{keywordtype}{void}\ CloseAll()\ override;}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//\ when\ the\ player\ gets\ close\ enough\ to\ an\ intractable\ object,\ i.e.\ this\ object\ is\ in\ focus,\ then\ a\ popup\ will\ appear\ to\ let\ the\ player\ know\ it\ can\ interact\ with\ it.}}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ OpenEncourageInteractUI();}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ CloseEncourageInteractUI();}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ SetLockController(ULockControllerComponent*\ newController);}
+\DoxyCodeLine{00033\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ CloseLockUI();}
+\DoxyCodeLine{00035\ protected:}
+\DoxyCodeLine{00036\ \ \ \ \ virtual\ \textcolor{keywordtype}{void}\ BeginPlay()\ override;}
+\DoxyCodeLine{00037\ private:}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{comment}{//\ =============================\ PROPERTIES\ =============================}}
+\DoxyCodeLine{00040\ \ \ \ \ UPROPERTY()}
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{class_u_interaction_u_i}{UInteractionUI}}*\ interactionPanel;}
+\DoxyCodeLine{00042\ \ \ \ \ UPROPERTY()}
+\DoxyCodeLine{00043\ \ \ \ \ \mbox{\hyperlink{class_u_lock_u_i}{ULockUI}}*\ lockPanel;}
+\DoxyCodeLine{00044\ \ \ \ \ UPROPERTY()}
+\DoxyCodeLine{00045\ \ \ \ \ UUserWidget*\ encourageInteractionPanel;}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{comment}{//\ =============================\ FUNCTIONS\ =============================}}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ CloseInteractionUI();}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ OpenInteractionUI();}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ OpenLockUI();}
+\DoxyCodeLine{00050\ \};}
+
+\end{DoxyCode}

@@ -1,0 +1,133 @@
+\doxysection{AGame\+UIContoller Class Reference}
+\hypertarget{class_a_game_u_i_contoller}{}\label{class_a_game_u_i_contoller}\index{AGameUIContoller@{AGameUIContoller}}
+
+
+{\ttfamily \#include $<$Game\+UIContoller.\+h$>$}
+
+Inheritance diagram for AGame\+UIContoller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_a_game_u_i_contoller}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_a_game_u_i_contoller_a372c181b65495780acecc2d23768e36f}{Update\+Interaction\+UI}} (const AActor \texorpdfstring{$\ast$}{*}interacted\+Actor)
+\item 
+virtual void \mbox{\hyperlink{class_a_game_u_i_contoller_aba87e5a7ecdee53afc775b94efa7c83e}{Close\+All}} () override
+\item 
+void \mbox{\hyperlink{class_a_game_u_i_contoller_a269e3cb48b2f938f6738b6b37082cc64}{Open\+Encourage\+Interact\+UI}} ()
+\item 
+void \mbox{\hyperlink{class_a_game_u_i_contoller_a2bdb2d1d78d01b8601e1a3242fe9da7d}{Close\+Encourage\+Interact\+UI}} ()
+\item 
+void \mbox{\hyperlink{class_a_game_u_i_contoller_ab872a2f30ac2be6e8e0ae93154d6f7de}{Set\+Lock\+Controller}} (ULock\+Controller\+Component \texorpdfstring{$\ast$}{*}new\+Controller)
+\item 
+void \mbox{\hyperlink{class_a_game_u_i_contoller_af08c294eac943f335279f7250455c3a9}{Close\+Lock\+UI}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_a_u_i_controller}{AUIController}}}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+TSubclass\+Of$<$ \mbox{\hyperlink{class_u_interaction_u_i}{UInteraction\+UI}} $>$ \mbox{\hyperlink{class_a_game_u_i_contoller_a8d5a550b670690f84d533f9e7e8d0ba8}{interaction\+UIClass}}
+\item 
+TSubclass\+Of$<$ UUser\+Widget $>$ \mbox{\hyperlink{class_a_game_u_i_contoller_a021b74704789a221c7223df16a32a696}{enourage\+Interaction\+UIClass}}
+\item 
+TSubclass\+Of$<$ \mbox{\hyperlink{class_u_lock_u_i}{ULock\+UI}} $>$ \mbox{\hyperlink{class_a_game_u_i_contoller_adfc49aff3494fa74b4fd34d7d7914bef}{lock\+UIClass}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_a_game_u_i_contoller_ad1f49ee46d4de40f6417f728ff374be5}{Begin\+Play}} () override
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_a_u_i_controller}{AUIController}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_a_u_i_controller_ab394adf20cd0fea8bf2a9da3df250a76}{Switch\+To\+UIControls}} ()
+\item 
+void \mbox{\hyperlink{class_a_u_i_controller_a89f4b3f3bd553f051f31ce9a874089c4}{Switch\+To\+Player\+Controls}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_a_u_i_controller}{AUIController}}}
+\begin{DoxyCompactItemize}
+\item 
+FInput\+Mode\+UIOnly \mbox{\hyperlink{class_a_u_i_controller_a2aa5602432f064894b6e36dd2cfad514}{input\+Mode\+UI}}
+\item 
+FInput\+Mode\+Game\+Only \mbox{\hyperlink{class_a_u_i_controller_a86db36f456537acbb99db616f70f09d7}{game\+Input\+Mode}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_a_game_u_i_contoller_ad1f49ee46d4de40f6417f728ff374be5}\index{AGameUIContoller@{AGameUIContoller}!BeginPlay@{BeginPlay}}
+\index{BeginPlay@{BeginPlay}!AGameUIContoller@{AGameUIContoller}}
+\doxysubsubsection{\texorpdfstring{BeginPlay()}{BeginPlay()}}
+{\footnotesize\ttfamily \label{class_a_game_u_i_contoller_ad1f49ee46d4de40f6417f728ff374be5} 
+void AGame\+UIContoller\+::\+Begin\+Play (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+\Hypertarget{class_a_game_u_i_contoller_aba87e5a7ecdee53afc775b94efa7c83e}\index{AGameUIContoller@{AGameUIContoller}!CloseAll@{CloseAll}}
+\index{CloseAll@{CloseAll}!AGameUIContoller@{AGameUIContoller}}
+\doxysubsubsection{\texorpdfstring{CloseAll()}{CloseAll()}}
+{\footnotesize\ttfamily \label{class_a_game_u_i_contoller_aba87e5a7ecdee53afc775b94efa7c83e} 
+void AGame\+UIContoller\+::\+Close\+All (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_a_u_i_controller_a3c73a4d0a38c583df2ff476a3441230b}{AUIController}}.
+
+\Hypertarget{class_a_game_u_i_contoller_a2bdb2d1d78d01b8601e1a3242fe9da7d}\index{AGameUIContoller@{AGameUIContoller}!CloseEncourageInteractUI@{CloseEncourageInteractUI}}
+\index{CloseEncourageInteractUI@{CloseEncourageInteractUI}!AGameUIContoller@{AGameUIContoller}}
+\doxysubsubsection{\texorpdfstring{CloseEncourageInteractUI()}{CloseEncourageInteractUI()}}
+{\footnotesize\ttfamily \label{class_a_game_u_i_contoller_a2bdb2d1d78d01b8601e1a3242fe9da7d} 
+void AGame\+UIContoller\+::\+Close\+Encourage\+Interact\+UI (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_a_game_u_i_contoller_af08c294eac943f335279f7250455c3a9}\index{AGameUIContoller@{AGameUIContoller}!CloseLockUI@{CloseLockUI}}
+\index{CloseLockUI@{CloseLockUI}!AGameUIContoller@{AGameUIContoller}}
+\doxysubsubsection{\texorpdfstring{CloseLockUI()}{CloseLockUI()}}
+{\footnotesize\ttfamily \label{class_a_game_u_i_contoller_af08c294eac943f335279f7250455c3a9} 
+void AGame\+UIContoller\+::\+Close\+Lock\+UI (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_a_game_u_i_contoller_a269e3cb48b2f938f6738b6b37082cc64}\index{AGameUIContoller@{AGameUIContoller}!OpenEncourageInteractUI@{OpenEncourageInteractUI}}
+\index{OpenEncourageInteractUI@{OpenEncourageInteractUI}!AGameUIContoller@{AGameUIContoller}}
+\doxysubsubsection{\texorpdfstring{OpenEncourageInteractUI()}{OpenEncourageInteractUI()}}
+{\footnotesize\ttfamily \label{class_a_game_u_i_contoller_a269e3cb48b2f938f6738b6b37082cc64} 
+void AGame\+UIContoller\+::\+Open\+Encourage\+Interact\+UI (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_a_game_u_i_contoller_ab872a2f30ac2be6e8e0ae93154d6f7de}\index{AGameUIContoller@{AGameUIContoller}!SetLockController@{SetLockController}}
+\index{SetLockController@{SetLockController}!AGameUIContoller@{AGameUIContoller}}
+\doxysubsubsection{\texorpdfstring{SetLockController()}{SetLockController()}}
+{\footnotesize\ttfamily \label{class_a_game_u_i_contoller_ab872a2f30ac2be6e8e0ae93154d6f7de} 
+void AGame\+UIContoller\+::\+Set\+Lock\+Controller (\begin{DoxyParamCaption}\item[{ULock\+Controller\+Component \texorpdfstring{$\ast$}{*}}]{new\+Controller}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_a_game_u_i_contoller_a372c181b65495780acecc2d23768e36f}\index{AGameUIContoller@{AGameUIContoller}!UpdateInteractionUI@{UpdateInteractionUI}}
+\index{UpdateInteractionUI@{UpdateInteractionUI}!AGameUIContoller@{AGameUIContoller}}
+\doxysubsubsection{\texorpdfstring{UpdateInteractionUI()}{UpdateInteractionUI()}}
+{\footnotesize\ttfamily \label{class_a_game_u_i_contoller_a372c181b65495780acecc2d23768e36f} 
+void AGame\+UIContoller\+::\+Update\+Interaction\+UI (\begin{DoxyParamCaption}\item[{const AActor \texorpdfstring{$\ast$}{*}}]{interacted\+Actor}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_a_game_u_i_contoller_a021b74704789a221c7223df16a32a696}\index{AGameUIContoller@{AGameUIContoller}!enourageInteractionUIClass@{enourageInteractionUIClass}}
+\index{enourageInteractionUIClass@{enourageInteractionUIClass}!AGameUIContoller@{AGameUIContoller}}
+\doxysubsubsection{\texorpdfstring{enourageInteractionUIClass}{enourageInteractionUIClass}}
+{\footnotesize\ttfamily \label{class_a_game_u_i_contoller_a021b74704789a221c7223df16a32a696} 
+TSubclass\+Of$<$UUser\+Widget$>$ AGame\+UIContoller\+::enourage\+Interaction\+UIClass}
+
+\Hypertarget{class_a_game_u_i_contoller_a8d5a550b670690f84d533f9e7e8d0ba8}\index{AGameUIContoller@{AGameUIContoller}!interactionUIClass@{interactionUIClass}}
+\index{interactionUIClass@{interactionUIClass}!AGameUIContoller@{AGameUIContoller}}
+\doxysubsubsection{\texorpdfstring{interactionUIClass}{interactionUIClass}}
+{\footnotesize\ttfamily \label{class_a_game_u_i_contoller_a8d5a550b670690f84d533f9e7e8d0ba8} 
+TSubclass\+Of$<$\mbox{\hyperlink{class_u_interaction_u_i}{UInteraction\+UI}}$>$ AGame\+UIContoller\+::interaction\+UIClass}
+
+\Hypertarget{class_a_game_u_i_contoller_adfc49aff3494fa74b4fd34d7d7914bef}\index{AGameUIContoller@{AGameUIContoller}!lockUIClass@{lockUIClass}}
+\index{lockUIClass@{lockUIClass}!AGameUIContoller@{AGameUIContoller}}
+\doxysubsubsection{\texorpdfstring{lockUIClass}{lockUIClass}}
+{\footnotesize\ttfamily \label{class_a_game_u_i_contoller_adfc49aff3494fa74b4fd34d7d7914bef} 
+TSubclass\+Of$<$\mbox{\hyperlink{class_u_lock_u_i}{ULock\+UI}}$>$ AGame\+UIContoller\+::lock\+UIClass}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Source/\+Cplus\+Project/\+UI/\+Controllers/\mbox{\hyperlink{_game_u_i_contoller_8h}{Game\+UIContoller.\+h}}\item 
+Source/\+Cplus\+Project/\+UI/\+Controllers/\mbox{\hyperlink{_game_u_i_contoller_8cpp}{Game\+UIContoller.\+cpp}}\end{DoxyCompactItemize}

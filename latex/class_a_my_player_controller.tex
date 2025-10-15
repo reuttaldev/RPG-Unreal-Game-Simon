@@ -1,0 +1,104 @@
+\doxysection{AMy\+Player\+Controller Class Reference}
+\hypertarget{class_a_my_player_controller}{}\label{class_a_my_player_controller}\index{AMyPlayerController@{AMyPlayerController}}
+
+
+{\ttfamily \#include $<$My\+Player\+Controller.\+h$>$}
+
+Inheritance diagram for AMy\+Player\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_a_my_player_controller}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_a_my_player_controller_adabb899a0bdeeabcd9b25ec44e24a8bf}{AMy\+Player\+Controller}} ()
+\item 
+void \mbox{\hyperlink{class_a_my_player_controller_ad1f76edad826fe8ef1797f37c98a9ffd}{Set\+Last\+Interacted\+Actor}} (AActor \texorpdfstring{$\ast$}{*}acotor)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+UInput\+Action \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_a_my_player_controller_adcbe3b9e5d19d283e6472aa5b53d208b}{action\+Move}} = nullptr
+\item 
+UInput\+Action \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_a_my_player_controller_a517e66923f9b51c907619b6e6870a796}{action\+Interact}} = nullptr
+\item 
+UInput\+Mapping\+Context \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_a_my_player_controller_a5db7425cd3253bdce2b5ba3935444e31}{input\+Mapping\+Context}} = nullptr
+\item 
+FVector2D \mbox{\hyperlink{class_a_my_player_controller_acc8cf824024f7599e588aa6f2778f281}{direction}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_a_my_player_controller_a5c5b1ac566dee05509261d52a3c4131f}{On\+Possess}} (APawn \texorpdfstring{$\ast$}{*}pawn) override
+\begin{DoxyCompactList}\small\item\em on enable and on disable. pawn = player. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_a_my_player_controller_a31fb76bf87826eb50372668f6d23590a}{On\+Un\+Possess}} () override
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_a_my_player_controller_adabb899a0bdeeabcd9b25ec44e24a8bf}\index{AMyPlayerController@{AMyPlayerController}!AMyPlayerController@{AMyPlayerController}}
+\index{AMyPlayerController@{AMyPlayerController}!AMyPlayerController@{AMyPlayerController}}
+\doxysubsubsection{\texorpdfstring{AMyPlayerController()}{AMyPlayerController()}}
+{\footnotesize\ttfamily \label{class_a_my_player_controller_adabb899a0bdeeabcd9b25ec44e24a8bf} 
+AMy\+Player\+Controller\+::\+AMy\+Player\+Controller (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_a_my_player_controller_a5c5b1ac566dee05509261d52a3c4131f}\index{AMyPlayerController@{AMyPlayerController}!OnPossess@{OnPossess}}
+\index{OnPossess@{OnPossess}!AMyPlayerController@{AMyPlayerController}}
+\doxysubsubsection{\texorpdfstring{OnPossess()}{OnPossess()}}
+{\footnotesize\ttfamily \label{class_a_my_player_controller_a5c5b1ac566dee05509261d52a3c4131f} 
+void AMy\+Player\+Controller\+::\+On\+Possess (\begin{DoxyParamCaption}\item[{APawn \texorpdfstring{$\ast$}{*}}]{pawn}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+on enable and on disable. pawn = player. 
+
+on enable and on disable. pawn = player. This gets called once the controller gets connected to the player that was spawned. \Hypertarget{class_a_my_player_controller_a31fb76bf87826eb50372668f6d23590a}\index{AMyPlayerController@{AMyPlayerController}!OnUnPossess@{OnUnPossess}}
+\index{OnUnPossess@{OnUnPossess}!AMyPlayerController@{AMyPlayerController}}
+\doxysubsubsection{\texorpdfstring{OnUnPossess()}{OnUnPossess()}}
+{\footnotesize\ttfamily \label{class_a_my_player_controller_a31fb76bf87826eb50372668f6d23590a} 
+void AMy\+Player\+Controller\+::\+On\+Un\+Possess (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+\Hypertarget{class_a_my_player_controller_ad1f76edad826fe8ef1797f37c98a9ffd}\index{AMyPlayerController@{AMyPlayerController}!SetLastInteractedActor@{SetLastInteractedActor}}
+\index{SetLastInteractedActor@{SetLastInteractedActor}!AMyPlayerController@{AMyPlayerController}}
+\doxysubsubsection{\texorpdfstring{SetLastInteractedActor()}{SetLastInteractedActor()}}
+{\footnotesize\ttfamily \label{class_a_my_player_controller_ad1f76edad826fe8ef1797f37c98a9ffd} 
+void AMy\+Player\+Controller\+::\+Set\+Last\+Interacted\+Actor (\begin{DoxyParamCaption}\item[{AActor \texorpdfstring{$\ast$}{*}}]{acotor}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_a_my_player_controller_a517e66923f9b51c907619b6e6870a796}\index{AMyPlayerController@{AMyPlayerController}!actionInteract@{actionInteract}}
+\index{actionInteract@{actionInteract}!AMyPlayerController@{AMyPlayerController}}
+\doxysubsubsection{\texorpdfstring{actionInteract}{actionInteract}}
+{\footnotesize\ttfamily \label{class_a_my_player_controller_a517e66923f9b51c907619b6e6870a796} 
+UInput\+Action\texorpdfstring{$\ast$}{*} AMy\+Player\+Controller\+::action\+Interact = nullptr}
+
+\Hypertarget{class_a_my_player_controller_adcbe3b9e5d19d283e6472aa5b53d208b}\index{AMyPlayerController@{AMyPlayerController}!actionMove@{actionMove}}
+\index{actionMove@{actionMove}!AMyPlayerController@{AMyPlayerController}}
+\doxysubsubsection{\texorpdfstring{actionMove}{actionMove}}
+{\footnotesize\ttfamily \label{class_a_my_player_controller_adcbe3b9e5d19d283e6472aa5b53d208b} 
+UInput\+Action\texorpdfstring{$\ast$}{*} AMy\+Player\+Controller\+::action\+Move = nullptr}
+
+\Hypertarget{class_a_my_player_controller_acc8cf824024f7599e588aa6f2778f281}\index{AMyPlayerController@{AMyPlayerController}!direction@{direction}}
+\index{direction@{direction}!AMyPlayerController@{AMyPlayerController}}
+\doxysubsubsection{\texorpdfstring{direction}{direction}}
+{\footnotesize\ttfamily \label{class_a_my_player_controller_acc8cf824024f7599e588aa6f2778f281} 
+FVector2D AMy\+Player\+Controller\+::direction}
+
+\Hypertarget{class_a_my_player_controller_a5db7425cd3253bdce2b5ba3935444e31}\index{AMyPlayerController@{AMyPlayerController}!inputMappingContext@{inputMappingContext}}
+\index{inputMappingContext@{inputMappingContext}!AMyPlayerController@{AMyPlayerController}}
+\doxysubsubsection{\texorpdfstring{inputMappingContext}{inputMappingContext}}
+{\footnotesize\ttfamily \label{class_a_my_player_controller_a5db7425cd3253bdce2b5ba3935444e31} 
+UInput\+Mapping\+Context\texorpdfstring{$\ast$}{*} AMy\+Player\+Controller\+::input\+Mapping\+Context = nullptr}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Source/\+Cplus\+Project/\+Player/\mbox{\hyperlink{_my_player_controller_8h}{My\+Player\+Controller.\+h}}\item 
+Source/\+Cplus\+Project/\+Player/\mbox{\hyperlink{_my_player_controller_8cpp}{My\+Player\+Controller.\+cpp}}\end{DoxyCompactItemize}

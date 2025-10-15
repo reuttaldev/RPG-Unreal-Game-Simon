@@ -1,0 +1,25 @@
+\doxysection{Interaction\+UI.\+h}
+\hypertarget{_interaction_u_i_8h_source}{}\label{_interaction_u_i_8h_source}\index{Source/CplusProject/UI/Widgets/InteractionUI.h@{Source/CplusProject/UI/Widgets/InteractionUI.h}}
+\mbox{\hyperlink{_interaction_u_i_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}Blueprint/UserWidget.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <Components/TextBlock.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}InteractionUI.generated.h"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ UCLASS()}
+\DoxyCodeLine{00009\ class\ CPLUSPROJECT\_API\ \mbox{\hyperlink{class_u_interaction_u_i}{UInteractionUI}}\ :\ public\ UUserWidget}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00012\ \ \ \ \ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00014\ \ \ \ \ UPROPERTY(VisibleAnywhere,meta\ =\ (BindWidget))}
+\DoxyCodeLine{00015\ \ \ \ \ UTextBlock*\ textBlock;}
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_interaction_u_i_a8744876f39839edbb5cb5467a873f869}{UpdateWidget}}(\textcolor{keyword}{const}\ FText\&\ data)\textcolor{keyword}{\ const\ }\{textBlock-\/>SetText(data);\}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \};}
+
+\end{DoxyCode}

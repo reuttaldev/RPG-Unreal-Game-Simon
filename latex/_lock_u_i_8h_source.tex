@@ -1,0 +1,115 @@
+\doxysection{Lock\+UI.\+h}
+\hypertarget{_lock_u_i_8h_source}{}\label{_lock_u_i_8h_source}\index{Source/CplusProject/UI/Widgets/LockUI.h@{Source/CplusProject/UI/Widgets/LockUI.h}}
+\mbox{\hyperlink{_lock_u_i_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}Blueprint/UserWidget.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}Components/Button.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_lock_controller_component_8h}{../../Environment/LockControllerComponent.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_a_interactable_actor_8h}{../../Environment/AInteractableActor.h}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_simon_data_8h}{../../Structs/SimonData.h}}"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}Components/AudioComponent.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}Components/Image.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}LockUI.generated.h"{}}}
+\DoxyCodeLine{00012\ \ }
+\DoxyCodeLine{00013\ UCLASS()}
+\DoxyCodeLine{00014\ class\ CPLUSPROJECT\_API\ \mbox{\hyperlink{class_u_lock_u_i}{ULockUI}}\ :\ public\ UUserWidget}
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{comment}{//\ =============================\ PROPERTIES\ =============================}}
+\DoxyCodeLine{00019\ \ \ \ \ UPROPERTY(VisibleAnywhere,\ meta\ =\ (BindWidget),\ Category\ =\ \textcolor{stringliteral}{"{}UI\ Binding"{}})}
+\DoxyCodeLine{00020\ \ \ \ \ UButton*\ redButton;}
+\DoxyCodeLine{00021\ \ \ \ \ UPROPERTY(VisibleAnywhere,\ meta\ =\ (BindWidget),\ Category\ =\ "{}UI\ Binding"{})}
+\DoxyCodeLine{00022\ \ \ \ \ UButton*\ greenButton;}
+\DoxyCodeLine{00023\ \ \ \ \ UPROPERTY(VisibleAnywhere,\ meta\ =\ (BindWidget),\ Category\ =\ "{}UI\ Binding"{})}
+\DoxyCodeLine{00024\ \ \ \ \ UButton*\ blueButton;}
+\DoxyCodeLine{00025\ \ \ \ \ UPROPERTY(VisibleAnywhere,\ meta\ =\ (BindWidget),\ Category\ =\ "{}UI\ Binding"{})}
+\DoxyCodeLine{00026\ \ \ \ \ UButton*\ yellowButton;}
+\DoxyCodeLine{00027\ \ \ \ \ UPROPERTY(VisibleAnywhere,\ meta\ =\ (BindWidget),\ Category\ =\ "{}UI\ Binding"{})}
+\DoxyCodeLine{00028\ \ \ \ \ UButton*\ hintButton;}
+\DoxyCodeLine{00029\ \ \ \ \ UPROPERTY(VisibleAnywhere,\ meta\ =\ (BindWidget),\ Category\ =\ "{}UI\ Binding"{})}
+\DoxyCodeLine{00030\ \ \ \ \ UButton*\ closeButton;}
+\DoxyCodeLine{00031\ \ \ \ \ UPROPERTY(VisibleAnywhere,\ meta\ =\ (BindWidget),\ Category\ =\ "{}UI\ Binding"{})}
+\DoxyCodeLine{00032\ \ \ \ \ UImage*\ errorImage;}
+\DoxyCodeLine{00033\ \ \ \ \ UPROPERTY(VisibleAnywhere,\ meta\ =\ (BindWidget),\ Category\ =\ "{}UI\ Binding"{})}
+\DoxyCodeLine{00034\ \ \ \ \ UImage*\ greenHighlightImage;}
+\DoxyCodeLine{00035\ \ \ \ \ UPROPERTY(VisibleAnywhere,\ meta\ =\ (BindWidget),\ Category\ =\ "{}UI\ Binding"{})}
+\DoxyCodeLine{00036\ \ \ \ \ UImage*\ blueHighlightImage;}
+\DoxyCodeLine{00037\ \ \ \ \ UPROPERTY(VisibleAnywhere,\ meta\ =\ (BindWidget),\ Category\ =\ "{}UI\ Binding"{})}
+\DoxyCodeLine{00038\ \ \ \ \ UImage*\ yellowHighlightImage;}
+\DoxyCodeLine{00039\ \ \ \ \ UPROPERTY(VisibleAnywhere,\ meta\ =\ (BindWidget),\ Category\ =\ "{}UI\ Binding"{})}
+\DoxyCodeLine{00040\ \ \ \ \ UImage*\ redHighlightImage;}
+\DoxyCodeLine{00041\ \ \ \ \ UPROPERTY(EditAnywhere,\ Category\ =\ "{}Audio"{})}
+\DoxyCodeLine{00042\ \ \ \ \ TArray<USoundBase*>\ notesAudio;}
+\DoxyCodeLine{00043\ \ \ \ \ UPROPERTY(EditAnywhere,\ Category\ =\ "{}Audio"{})}
+\DoxyCodeLine{00044\ \ \ \ \ USoundBase*\ errorSound;}
+\DoxyCodeLine{00045\ \ \ \ \ UPROPERTY(EditAnywhere,\ Category\ =\ "{}Visuals"{})}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{float}\ timeBetweenNotes\ =\ 0.7f;}
+\DoxyCodeLine{00047\ \ \ \ \ UPROPERTY(EditAnywhere,\ Category\ =\ "{}Visuals"{})}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{float}\ showButtonHightlightTime\ =\ 0.7f;}
+\DoxyCodeLine{00049\ \ \ \ \ UPROPERTY(EditAnywhere,\ Category\ =\ "{}Visuals"{})}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{float}\ showErrorTime\ =\ 1.3f;}
+\DoxyCodeLine{00051\ \ \ \ \ UPROPERTY(EditAnywhere,\ Category\ =\ "{}Audio"{})}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{float}\ volumeMultiplier\ =\ 1.5;}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{comment}{//\ =============================\ PROPERTIES\ =============================}}
+\DoxyCodeLine{00054\ \ \ \ \ UPROPERTY(EditAnywhere,\ Category\ =\ "{}Panels"{})}
+\DoxyCodeLine{00055\ \ \ \ \ TSubclassOf<\mbox{\hyperlink{class_a_a_interactable_actor}{AAInteractableActor}}>\ openDoorActorClass;}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{comment}{//\ =============================\ FUNCTIONS\ =============================}}
+\DoxyCodeLine{00057\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{void}\ BindButtons();}
+\DoxyCodeLine{00059\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{void}\ RedButton();}
+\DoxyCodeLine{00061\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ BlueButton();}
+\DoxyCodeLine{00063\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{void}\ GreenButton();}
+\DoxyCodeLine{00065\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{void}\ YellowButton()\ ;}
+\DoxyCodeLine{00067\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{void}\ GiveHint();}
+\DoxyCodeLine{00069\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{void}\ OnOpen();}
+\DoxyCodeLine{00072\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{void}\ OnUnlocked();}
+\DoxyCodeLine{00075\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{void}\ OnClose();}
+\DoxyCodeLine{00078\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{void}\ PlaySequence();}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{bool}\ CheckSequence();}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{void}\ SetLockController(ULockControllerComponent*\ newController);}
+\DoxyCodeLine{00083\ protected:}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{comment}{//\ =============================\ FUNCTIONS\ =============================}}
+\DoxyCodeLine{00085\ \ \ \ \ virtual\ \textcolor{keywordtype}{void}\ NativeConstruct()\ override;}
+\DoxyCodeLine{00086\ private:\ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{comment}{//\ =============================\ PROPERTIES\ =============================}}
+\DoxyCodeLine{00088\ \ \ \ \ UPROPERTY()}
+\DoxyCodeLine{00090\ \ \ \ \ ULockControllerComponent*\ lockController\ =\ \textcolor{keywordtype}{nullptr};}
+\DoxyCodeLine{00091\ \ \ \ \ UPROPERTY()}
+\DoxyCodeLine{00092\ \ \ \ \ UAudioComponent*\ audioComponent=\ \textcolor{keywordtype}{nullptr};}
+\DoxyCodeLine{00093\ \ \ \ \ UPROPERTY()}
+\DoxyCodeLine{00095\ \ \ \ \ TArray<\mbox{\hyperlink{_simon_data_8h_a5620b670b4b7048774e35289b1a7bc12}{Notes}}>\ sequence;}
+\DoxyCodeLine{00096\ \ \ \ \ UPROPERTY()}
+\DoxyCodeLine{00097\ \ \ \ \ class\ \mbox{\hyperlink{class_a_game_u_i_contoller}{AGameUIContoller}}*\ uiController;\ \textcolor{comment}{//\ circular\ dependencies}}
+\DoxyCodeLine{00098\ \ \ \ \ FTimerHandle\ imageTimerHandle;}
+\DoxyCodeLine{00099\ \ \ \ \ FTimerHandle\ playTimerHandle;}
+\DoxyCodeLine{00100\ \ \ \ \ FTimerDelegate\ playNoteDelegate;}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{comment}{//\ =============================\ FUNCTIONS\ =============================}}
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordtype}{bool}\ ValidityChecks(const\ ULockControllerComponent*\ newController)\ const;}
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordtype}{void}\ PlayNote(int8\ noteNumber);}
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordtype}{void}\ ResetSequence();}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{void}\ AddToSequence(\mbox{\hyperlink{_simon_data_8h_a5620b670b4b7048774e35289b1a7bc12}{Notes}}\ note);}
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keywordtype}{void}\ ShowWrongSequenceUI();}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordtype}{void}\ OnButtonClick(\mbox{\hyperlink{_simon_data_8h_a58ab5638cde8f4c6f8a33b475d401d9f}{ButtonColors}}\ color);}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{void}\ DebugSequences();}
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordtype}{void}\ ShowImage(\ UImage*\ image,\ \textcolor{keywordtype}{bool}\ hideAutomatically\ =\ true,\ \textcolor{keywordtype}{float}\ delay\ =\ 0.5f);}
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keywordtype}{void}\ HideImage(\ UImage*\ image);}
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordtype}{void}\ PlayNextSound(\textcolor{keywordtype}{int}\ i);}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordtype}{void}\ ShowHighlightEffect(\mbox{\hyperlink{_simon_data_8h_a58ab5638cde8f4c6f8a33b475d401d9f}{ButtonColors}}\ color);}
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordtype}{void}\ HideHightlightEffect();}
+\DoxyCodeLine{00114\ \ \ \ \ \mbox{\hyperlink{_simon_data_8h_a58ab5638cde8f4c6f8a33b475d401d9f}{ButtonColors}}\ FindColorByNote(\mbox{\hyperlink{_simon_data_8h_a5620b670b4b7048774e35289b1a7bc12}{Notes}}\ note)\ const;}
+\DoxyCodeLine{00115\ \};}
+
+\end{DoxyCode}

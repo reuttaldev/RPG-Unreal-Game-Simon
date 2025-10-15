@@ -1,0 +1,67 @@
+\doxysection{IInteraction\+Interface Class Reference}
+\hypertarget{class_i_interaction_interface}{}\label{class_i_interaction_interface}\index{IInteractionInterface@{IInteractionInterface}}
+
+
+Every object that the player can interact with must implement this interface.  
+
+
+
+
+{\ttfamily \#include $<$Interaction\+Interface.\+h$>$}
+
+Inheritance diagram for IInteraction\+Interface\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_i_interaction_interface}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_i_interaction_interface_a15fc2354a45396ed9becd7b6dba90316}{Begin\+Focus2D}} ()=0
+\item 
+virtual void \mbox{\hyperlink{class_i_interaction_interface_a0cc78ad96f04607c8e856b475e398738}{End\+Focus2D}} ()=0
+\item 
+virtual const \mbox{\hyperlink{struct_f_item_data}{FItem\+Data}} \& \mbox{\hyperlink{class_i_interaction_interface_a1135429128cec4aee8f06656535f925e}{Get\+Item\+Data}} () const =0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Every object that the player can interact with must implement this interface. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_i_interaction_interface_a15fc2354a45396ed9becd7b6dba90316}\index{IInteractionInterface@{IInteractionInterface}!BeginFocus2D@{BeginFocus2D}}
+\index{BeginFocus2D@{BeginFocus2D}!IInteractionInterface@{IInteractionInterface}}
+\doxysubsubsection{\texorpdfstring{BeginFocus2D()}{BeginFocus2D()}}
+{\footnotesize\ttfamily \label{class_i_interaction_interface_a15fc2354a45396ed9becd7b6dba90316} 
+virtual void IInteraction\+Interface\+::\+Begin\+Focus2D (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_a_a_interactable_actor_a106a6094924e97d6ad5b0de037c02905}{AAInteractable\+Actor}}.
+
+\Hypertarget{class_i_interaction_interface_a0cc78ad96f04607c8e856b475e398738}\index{IInteractionInterface@{IInteractionInterface}!EndFocus2D@{EndFocus2D}}
+\index{EndFocus2D@{EndFocus2D}!IInteractionInterface@{IInteractionInterface}}
+\doxysubsubsection{\texorpdfstring{EndFocus2D()}{EndFocus2D()}}
+{\footnotesize\ttfamily \label{class_i_interaction_interface_a0cc78ad96f04607c8e856b475e398738} 
+virtual void IInteraction\+Interface\+::\+End\+Focus2D (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_a_a_interactable_actor_a6db057b05360879c858d7bcd66b856c1}{AAInteractable\+Actor}}.
+
+\Hypertarget{class_i_interaction_interface_a1135429128cec4aee8f06656535f925e}\index{IInteractionInterface@{IInteractionInterface}!GetItemData@{GetItemData}}
+\index{GetItemData@{GetItemData}!IInteractionInterface@{IInteractionInterface}}
+\doxysubsubsection{\texorpdfstring{GetItemData()}{GetItemData()}}
+{\footnotesize\ttfamily \label{class_i_interaction_interface_a1135429128cec4aee8f06656535f925e} 
+virtual const \mbox{\hyperlink{struct_f_item_data}{FItem\+Data}} \& IInteraction\+Interface\+::\+Get\+Item\+Data (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_a_a_interactable_actor_a201b08ae806513e702ba9099105c325b}{AAInteractable\+Actor}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Source/\+Cplus\+Project/\+Interfaces/\mbox{\hyperlink{_interaction_interface_8h}{Interaction\+Interface.\+h}}\end{DoxyCompactItemize}

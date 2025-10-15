@@ -1,0 +1,69 @@
+\doxysection{My\+Player\+Controller.\+h}
+\hypertarget{_my_player_controller_8h_source}{}\label{_my_player_controller_8h_source}\index{Source/CplusProject/Player/MyPlayerController.h@{Source/CplusProject/Player/MyPlayerController.h}}
+\mbox{\hyperlink{_my_player_controller_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}Components/CapsuleComponent.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}GameFramework/PlayerController.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}EnhancedInputComponent.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}InputMappingContext.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}GameFramework/Character.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}Delegates/Delegate.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_game_u_i_contoller_8h}{../UI/Controllers/GameUIContoller.h}}"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_interaction_interface_8h}{../Interfaces/InteractionInterface.h}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}MyPlayerController.generated.h"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ UCLASS(Abstract)}
+\DoxyCodeLine{00015\ class\ CPLUSPROJECT\_API\ \mbox{\hyperlink{class_a_my_player_controller}{AMyPlayerController}}\ :\ public\ APlayerController}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{comment}{//\ =============================\ PROPERTIES\ =============================}}
+\DoxyCodeLine{00022\ \ \ \ \ UPROPERTY(EditDefaultsOnly,\ BlueprintReadOnly,\ Category\ =\ \textcolor{stringliteral}{"{}Player\ Input"{}})}
+\DoxyCodeLine{00023\ \ \ \ \ UInputAction*\ actionMove=\ \textcolor{keywordtype}{nullptr};}
+\DoxyCodeLine{00024\ \ \ \ \ UPROPERTY(EditDefaultsOnly,\ BlueprintReadOnly,\ Category\ =\ "{}Player\ Input"{})}
+\DoxyCodeLine{00025\ \ \ \ \ UInputAction*\ actionInteract=\ \textcolor{keywordtype}{nullptr};}
+\DoxyCodeLine{00026\ \ \ \ \ UPROPERTY(EditDefaultsOnly,\ BlueprintReadOnly,\ Category\ =\ "{}Player\ Input"{})}
+\DoxyCodeLine{00027\ \ \ \ \ UInputMappingContext*\ inputMappingContext\ =\ \textcolor{keywordtype}{nullptr};}
+\DoxyCodeLine{00028\ \ \ \ \ UPROPERTY(BlueprintReadWrite,\ VisibleAnywhere)}
+\DoxyCodeLine{00029\ \ \ \ \ FVector2D\ direction;}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{comment}{//\ =============================\ FUNCTIONS\ =============================}}
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{class_a_my_player_controller}{AMyPlayerController}}();}
+\DoxyCodeLine{00032\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ SetLastInteractedActor(AActor*\ acotor);}
+\DoxyCodeLine{00034\ protected:}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{comment}{//\ =============================\ FUNCTIONS\ =============================}}
+\DoxyCodeLine{00037\ \ \ \ \ virtual\ \textcolor{keywordtype}{void}\ OnPossess(APawn*\ pawn)\ override;}
+\DoxyCodeLine{00038\ \ \ \ \ virtual\ \textcolor{keywordtype}{void}\ OnUnPossess()\ override;}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ private:}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{comment}{//\ =============================\ PROPERTIES\ =============================}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ UPROPERTY()}
+\DoxyCodeLine{00044\ \ \ \ \ UEnhancedInputComponent*\ inputComponentPtr\ =\ \textcolor{keywordtype}{nullptr};}
+\DoxyCodeLine{00045\ \ \ \ \ UPROPERTY()}
+\DoxyCodeLine{00046\ \ \ \ \ ACharacter*\ playerPtr\ =\ \textcolor{keywordtype}{nullptr};}
+\DoxyCodeLine{00047\ \ \ \ \ UPROPERTY()}
+\DoxyCodeLine{00048\ \ \ \ \ UCapsuleComponent*\ playerCollisionComponent\ =\ \textcolor{keywordtype}{nullptr};}
+\DoxyCodeLine{00049\ \ \ \ \ UPROPERTY()}
+\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{class_a_game_u_i_contoller}{AGameUIContoller}}*\ uiController=\ \textcolor{keywordtype}{nullptr};}
+\DoxyCodeLine{00051\ \ \ \ \ UPROPERTY()}
+\DoxyCodeLine{00052\ \ \ \ \ AActor*\ lastInteractedActor\ =\ \textcolor{keywordtype}{nullptr};}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{float}\ movementSpeed\ =\ 100.0;}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{bool}\ canInteract;}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{bool}\ isInteracting;}
+\DoxyCodeLine{00058\ \textcolor{comment}{//\ =============================\ FUNCTIONS\ =============================}}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{comment}{//will\ be\ called\ on\ collision\ enter.\ here\ I\ will\ check\ if\ I\ hit\ anything\ that\ inherits\ from\ InteractionInterface}}
+\DoxyCodeLine{00060\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{void}\ OverlapBegin(UPrimitiveComponent*\ OverlappedComponent,\ AActor*\ OtherActor,\ UPrimitiveComponent*\ OtherComp,\ int32\ OtherBodyIndex,\ \textcolor{keywordtype}{bool}\ bFromSweep,\ const\ FHitResult\&\ SweepResult);}
+\DoxyCodeLine{00062\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{void}\ OverlapEnd(UPrimitiveComponent*\ OverlappedComponent,\ AActor*\ OtherActor,\ UPrimitiveComponent*\ OtherComp,\ int32\ OtherBodyIndex);}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ HandleInteractInput();}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{void}\ HandleMoveInput(const\ FInputActionValue\&\ inputActionValue);}
+\DoxyCodeLine{00067\ \};}
+
+\end{DoxyCode}

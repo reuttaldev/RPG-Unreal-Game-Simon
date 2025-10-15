@@ -1,0 +1,28 @@
+\doxysection{AInteractable\+Actor.\+h}
+\hypertarget{_a_interactable_actor_8h_source}{}\label{_a_interactable_actor_8h_source}\index{Source/CplusProject/Environment/AInteractableActor.h@{Source/CplusProject/Environment/AInteractableActor.h}}
+\mbox{\hyperlink{_a_interactable_actor_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}GameFramework/Actor.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_interaction_interface_8h}{../Interfaces/InteractionInterface.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}AInteractableActor.generated.h"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ UCLASS()}
+\DoxyCodeLine{00009\ class\ CPLUSPROJECT\_API\ \mbox{\hyperlink{class_a_a_interactable_actor}{AAInteractableActor}}\ :\ public\ AActor,\ public\ \mbox{\hyperlink{class_i_interaction_interface}{IInteractionInterface}}}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00012\ \ \ \ \ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{public}:\ }
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{comment}{//\ =============================\ FUNCTIONS\ =============================}}
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{class_a_a_interactable_actor}{AAInteractableActor}}();}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ BeginFocus2D()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ EndFocus2D()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_f_item_data}{FItemData}}\&\ \mbox{\hyperlink{class_a_a_interactable_actor_a201b08ae806513e702ba9099105c325b}{GetItemData}}()\textcolor{keyword}{\ const\ override}\{\ \textcolor{keywordflow}{return}\ itemData;\ \};}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{comment}{//\ =============================\ PROPERTIES\ =============================}}
+\DoxyCodeLine{00020\ \ \ \ \ UPROPERTY(editanywhere)}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{struct_f_item_data}{FItemData}}\ itemData;}
+\DoxyCodeLine{00023\ \};}
+
+\end{DoxyCode}

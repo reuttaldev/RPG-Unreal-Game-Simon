@@ -15,13 +15,13 @@ enum class ItemType : uint8
 };
 
 USTRUCT()
+	/// each intractable instance will have its own copy of an ItemData
 struct CPLUSPROJECT_API FItemData
 {
 	GENERATED_BODY();
 public:
 	FItemData();
 	UPROPERTY(editanywhere) 
-	/// each interactable instance will have its own copy of an ItemData
 	ItemType itemType;
 	UPROPERTY(editanywhere)
 	FText description;

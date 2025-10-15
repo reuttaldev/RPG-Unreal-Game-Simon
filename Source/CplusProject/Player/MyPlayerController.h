@@ -50,7 +50,7 @@ private:
 	AGameUIContoller* uiController= nullptr;
 	UPROPERTY()
 	AActor* lastInteractedActor = nullptr;
-	float movementSpeed = 0.8f;
+	float movementSpeed = 100.0;
 	/// this is set to true when we are in close proximity of an intractable object
 	bool canInteract;
 	/// are we currently interacting with something?

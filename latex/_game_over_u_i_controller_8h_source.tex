@@ -1,0 +1,27 @@
+\doxysection{Game\+Over\+UIController.\+h}
+\hypertarget{_game_over_u_i_controller_8h_source}{}\label{_game_over_u_i_controller_8h_source}\index{Source/CplusProject/UI/Controllers/GameOverUIController.h@{Source/CplusProject/UI/Controllers/GameOverUIController.h}}
+\mbox{\hyperlink{_game_over_u_i_controller_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}GameFramework/HUD.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_game_over_u_i_8h}{CplusProject/UI/Widgets/GameOverUI.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_u_i_controller_8h}{UIController.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}GameOverUIController.generated.h"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ UCLASS()}
+\DoxyCodeLine{00010\ class\ CPLUSPROJECT\_API\ \mbox{\hyperlink{class_a_game_over_u_i_controller}{AGameOverUIController}}\ :\ public\ \mbox{\hyperlink{class_a_u_i_controller}{AUIController}}}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00013\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{comment}{//\ =============================\ PROPERTIES\ =============================}}
+\DoxyCodeLine{00015\ \ \ \ \ UPROPERTY(EditDefaultsOnly,\ Category\ =\ \textcolor{stringliteral}{"{}Panels"{}})}
+\DoxyCodeLine{00016\ \ \ \ \ TSubclassOf<\mbox{\hyperlink{class_u_game_over_u_i}{UGameOverUI}}>\ gameOverUIClass;}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{comment}{//\ =============================\ FUNCTIONS\ =============================}}
+\DoxyCodeLine{00018\ protected:}
+\DoxyCodeLine{00019\ \ \ \ \ virtual\ \textcolor{keywordtype}{void}\ BeginPlay()\ override;}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \};}
+
+\end{DoxyCode}

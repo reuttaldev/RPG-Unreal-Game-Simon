@@ -1,0 +1,301 @@
+\doxysection{ULock\+UI Class Reference}
+\hypertarget{class_u_lock_u_i}{}\label{class_u_lock_u_i}\index{ULockUI@{ULockUI}}
+
+
+{\ttfamily \#include $<$Lock\+UI.\+h$>$}
+
+Inheritance diagram for ULock\+UI\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_u_lock_u_i}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_u_lock_u_i_ab3359a49acd89fd167ef91116ce8530c}{Bind\+Buttons}} ()
+\item 
+void \mbox{\hyperlink{class_u_lock_u_i_aa205f68b3071e8f04264810cc4706842}{Red\+Button}} ()
+\item 
+void \mbox{\hyperlink{class_u_lock_u_i_a4e747043fab2cf74971422d7cd5d34ca}{Blue\+Button}} ()
+\item 
+void \mbox{\hyperlink{class_u_lock_u_i_acd5db9e2150e9dfeb6f947b74dbc1c1a}{Green\+Button}} ()
+\item 
+void \mbox{\hyperlink{class_u_lock_u_i_a32a087684877995bf29e5479590e1690}{Yellow\+Button}} ()
+\item 
+void \mbox{\hyperlink{class_u_lock_u_i_a10e60c3bb86e8f1834926616426477bd}{Give\+Hint}} ()
+\item 
+void \mbox{\hyperlink{class_u_lock_u_i_a2049f4572a47d1de6a30f8e6ba63db3a}{On\+Open}} ()
+\begin{DoxyCompactList}\small\item\em when the UI panel gets opened \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_u_lock_u_i_a8ace37b7e6aa2e014fc56717d72b1f9b}{On\+Unlocked}} ()
+\begin{DoxyCompactList}\small\item\em when the player successfully repeated the sequence \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_u_lock_u_i_a9e20baa1f4a54409d8581078c7e40d6a}{On\+Close}} ()
+\begin{DoxyCompactList}\small\item\em when the UI panel gets closed \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_u_lock_u_i_ab8e7dfbd00419103cc9d1b6f3fd2b3c5}{Play\+Sequence}} ()
+\item 
+bool \mbox{\hyperlink{class_u_lock_u_i_a8ce8d5961344a5093bc8f446d30ecaf9}{Check\+Sequence}} ()
+\begin{DoxyCompactList}\small\item\em returns true if the player was able to play the sequence that is set in the lock data \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_u_lock_u_i_a4a58ae15a245826a1b67a380023c032f}{Set\+Lock\+Controller}} (ULock\+Controller\+Component \texorpdfstring{$\ast$}{*}new\+Controller)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+UButton \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_u_lock_u_i_a5f98d5726248f323599e2a8dce561a8a}{red\+Button}}
+\item 
+UButton \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_u_lock_u_i_a8d28d15d9411e8218421d8129646be38}{green\+Button}}
+\item 
+UButton \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_u_lock_u_i_af71f5ebf0dbe38aa7ba6807b7425434f}{blue\+Button}}
+\item 
+UButton \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_u_lock_u_i_aca8260f50864fc6cdbd51b9035943ccf}{yellow\+Button}}
+\item 
+UButton \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_u_lock_u_i_adba1e0eedb73830ee006846448867f03}{hint\+Button}}
+\item 
+UButton \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_u_lock_u_i_a4e90915a508fb0cd08eeadcb51a0f4f7}{close\+Button}}
+\item 
+UImage \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_u_lock_u_i_ab7e05cda167f2ffc0240eee4351439fe}{error\+Image}}
+\item 
+UImage \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_u_lock_u_i_ad22954c3c8262c3310c68c4d7e0b6386}{green\+Highlight\+Image}}
+\item 
+UImage \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_u_lock_u_i_ae32386215af4f914bed813e2a5022f54}{blue\+Highlight\+Image}}
+\item 
+UImage \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_u_lock_u_i_a30f28e0ac3611287f09fda23c84e3e3b}{yellow\+Highlight\+Image}}
+\item 
+UImage \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_u_lock_u_i_a3e1d99cb3d3e46fad6f19cfc676bb424}{red\+Highlight\+Image}}
+\item 
+TArray$<$ USound\+Base \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_u_lock_u_i_a93e0797eb9b80024882496f949be99c5}{notes\+Audio}}
+\item 
+USound\+Base \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_u_lock_u_i_aea376dfa88a2e1d0276297e8144a77c8}{error\+Sound}}
+\item 
+float \mbox{\hyperlink{class_u_lock_u_i_a47c024f6bf2b2f6d632c8644b8845f68}{time\+Between\+Notes}} = 0.\+7f
+\item 
+float \mbox{\hyperlink{class_u_lock_u_i_a285cb04e139bbf771a9a2620ceec7e0a}{show\+Button\+Hightlight\+Time}} = 0.\+7f
+\item 
+float \mbox{\hyperlink{class_u_lock_u_i_acd7167e0e9e101f098f33ab75d4d5be5}{show\+Error\+Time}} = 1.\+3f
+\item 
+float \mbox{\hyperlink{class_u_lock_u_i_af2a4f615406eda0e8c092853ae995712}{volume\+Multiplier}} = 1.\+5
+\item 
+TSubclass\+Of$<$ \mbox{\hyperlink{class_a_a_interactable_actor}{AAInteractable\+Actor}} $>$ \mbox{\hyperlink{class_u_lock_u_i_ac4286b15d80371eb3b1abd36bd3f7f26}{open\+Door\+Actor\+Class}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_u_lock_u_i_adc97dab1d91f6c40848378d436651cd7}{Native\+Construct}} () override
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_u_lock_u_i_ab3359a49acd89fd167ef91116ce8530c}\index{ULockUI@{ULockUI}!BindButtons@{BindButtons}}
+\index{BindButtons@{BindButtons}!ULockUI@{ULockUI}}
+\doxysubsubsection{\texorpdfstring{BindButtons()}{BindButtons()}}
+{\footnotesize\ttfamily \label{class_u_lock_u_i_ab3359a49acd89fd167ef91116ce8530c} 
+void ULock\+UI\+::\+Bind\+Buttons (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_u_lock_u_i_a4e747043fab2cf74971422d7cd5d34ca}\index{ULockUI@{ULockUI}!BlueButton@{BlueButton}}
+\index{BlueButton@{BlueButton}!ULockUI@{ULockUI}}
+\doxysubsubsection{\texorpdfstring{BlueButton()}{BlueButton()}}
+{\footnotesize\ttfamily \label{class_u_lock_u_i_a4e747043fab2cf74971422d7cd5d34ca} 
+void ULock\+UI\+::\+Blue\+Button (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_u_lock_u_i_a8ce8d5961344a5093bc8f446d30ecaf9}\index{ULockUI@{ULockUI}!CheckSequence@{CheckSequence}}
+\index{CheckSequence@{CheckSequence}!ULockUI@{ULockUI}}
+\doxysubsubsection{\texorpdfstring{CheckSequence()}{CheckSequence()}}
+{\footnotesize\ttfamily \label{class_u_lock_u_i_a8ce8d5961344a5093bc8f446d30ecaf9} 
+bool ULock\+UI\+::\+Check\+Sequence (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+returns true if the player was able to play the sequence that is set in the lock data 
+
+array is bigger, or equal but not the correct sequence\Hypertarget{class_u_lock_u_i_a10e60c3bb86e8f1834926616426477bd}\index{ULockUI@{ULockUI}!GiveHint@{GiveHint}}
+\index{GiveHint@{GiveHint}!ULockUI@{ULockUI}}
+\doxysubsubsection{\texorpdfstring{GiveHint()}{GiveHint()}}
+{\footnotesize\ttfamily \label{class_u_lock_u_i_a10e60c3bb86e8f1834926616426477bd} 
+void ULock\+UI\+::\+Give\+Hint (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_u_lock_u_i_acd5db9e2150e9dfeb6f947b74dbc1c1a}\index{ULockUI@{ULockUI}!GreenButton@{GreenButton}}
+\index{GreenButton@{GreenButton}!ULockUI@{ULockUI}}
+\doxysubsubsection{\texorpdfstring{GreenButton()}{GreenButton()}}
+{\footnotesize\ttfamily \label{class_u_lock_u_i_acd5db9e2150e9dfeb6f947b74dbc1c1a} 
+void ULock\+UI\+::\+Green\+Button (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_u_lock_u_i_adc97dab1d91f6c40848378d436651cd7}\index{ULockUI@{ULockUI}!NativeConstruct@{NativeConstruct}}
+\index{NativeConstruct@{NativeConstruct}!ULockUI@{ULockUI}}
+\doxysubsubsection{\texorpdfstring{NativeConstruct()}{NativeConstruct()}}
+{\footnotesize\ttfamily \label{class_u_lock_u_i_adc97dab1d91f6c40848378d436651cd7} 
+void ULock\+UI\+::\+Native\+Construct (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+\Hypertarget{class_u_lock_u_i_a9e20baa1f4a54409d8581078c7e40d6a}\index{ULockUI@{ULockUI}!OnClose@{OnClose}}
+\index{OnClose@{OnClose}!ULockUI@{ULockUI}}
+\doxysubsubsection{\texorpdfstring{OnClose()}{OnClose()}}
+{\footnotesize\ttfamily \label{class_u_lock_u_i_a9e20baa1f4a54409d8581078c7e40d6a} 
+void ULock\+UI\+::\+On\+Close (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+when the UI panel gets closed 
+
+\Hypertarget{class_u_lock_u_i_a2049f4572a47d1de6a30f8e6ba63db3a}\index{ULockUI@{ULockUI}!OnOpen@{OnOpen}}
+\index{OnOpen@{OnOpen}!ULockUI@{ULockUI}}
+\doxysubsubsection{\texorpdfstring{OnOpen()}{OnOpen()}}
+{\footnotesize\ttfamily \label{class_u_lock_u_i_a2049f4572a47d1de6a30f8e6ba63db3a} 
+void ULock\+UI\+::\+On\+Open (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+when the UI panel gets opened 
+
+\Hypertarget{class_u_lock_u_i_a8ace37b7e6aa2e014fc56717d72b1f9b}\index{ULockUI@{ULockUI}!OnUnlocked@{OnUnlocked}}
+\index{OnUnlocked@{OnUnlocked}!ULockUI@{ULockUI}}
+\doxysubsubsection{\texorpdfstring{OnUnlocked()}{OnUnlocked()}}
+{\footnotesize\ttfamily \label{class_u_lock_u_i_a8ace37b7e6aa2e014fc56717d72b1f9b} 
+void ULock\+UI\+::\+On\+Unlocked (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+when the player successfully repeated the sequence 
+
+generate an open door class instance in the exact same the locked door was before the open door class inherits from intractable actor, so player can leave the room destroy it since we left the lock and it is no longer relevant
+
+get the scene name that was set on the lock controller, which says which scene should be loaded once the lock is open
+
+tell the UI panel this data is what it needs to interact with now\Hypertarget{class_u_lock_u_i_ab8e7dfbd00419103cc9d1b6f3fd2b3c5}\index{ULockUI@{ULockUI}!PlaySequence@{PlaySequence}}
+\index{PlaySequence@{PlaySequence}!ULockUI@{ULockUI}}
+\doxysubsubsection{\texorpdfstring{PlaySequence()}{PlaySequence()}}
+{\footnotesize\ttfamily \label{class_u_lock_u_i_ab8e7dfbd00419103cc9d1b6f3fd2b3c5} 
+void ULock\+UI\+::\+Play\+Sequence (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_u_lock_u_i_aa205f68b3071e8f04264810cc4706842}\index{ULockUI@{ULockUI}!RedButton@{RedButton}}
+\index{RedButton@{RedButton}!ULockUI@{ULockUI}}
+\doxysubsubsection{\texorpdfstring{RedButton()}{RedButton()}}
+{\footnotesize\ttfamily \label{class_u_lock_u_i_aa205f68b3071e8f04264810cc4706842} 
+void ULock\+UI\+::\+Red\+Button (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_u_lock_u_i_a4a58ae15a245826a1b67a380023c032f}\index{ULockUI@{ULockUI}!SetLockController@{SetLockController}}
+\index{SetLockController@{SetLockController}!ULockUI@{ULockUI}}
+\doxysubsubsection{\texorpdfstring{SetLockController()}{SetLockController()}}
+{\footnotesize\ttfamily \label{class_u_lock_u_i_a4a58ae15a245826a1b67a380023c032f} 
+void ULock\+UI\+::\+Set\+Lock\+Controller (\begin{DoxyParamCaption}\item[{ULock\+Controller\+Component \texorpdfstring{$\ast$}{*}}]{new\+Controller}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_u_lock_u_i_a32a087684877995bf29e5479590e1690}\index{ULockUI@{ULockUI}!YellowButton@{YellowButton}}
+\index{YellowButton@{YellowButton}!ULockUI@{ULockUI}}
+\doxysubsubsection{\texorpdfstring{YellowButton()}{YellowButton()}}
+{\footnotesize\ttfamily \label{class_u_lock_u_i_a32a087684877995bf29e5479590e1690} 
+void ULock\+UI\+::\+Yellow\+Button (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_u_lock_u_i_af71f5ebf0dbe38aa7ba6807b7425434f}\index{ULockUI@{ULockUI}!blueButton@{blueButton}}
+\index{blueButton@{blueButton}!ULockUI@{ULockUI}}
+\doxysubsubsection{\texorpdfstring{blueButton}{blueButton}}
+{\footnotesize\ttfamily \label{class_u_lock_u_i_af71f5ebf0dbe38aa7ba6807b7425434f} 
+UButton\texorpdfstring{$\ast$}{*} ULock\+UI\+::blue\+Button}
+
+\Hypertarget{class_u_lock_u_i_ae32386215af4f914bed813e2a5022f54}\index{ULockUI@{ULockUI}!blueHighlightImage@{blueHighlightImage}}
+\index{blueHighlightImage@{blueHighlightImage}!ULockUI@{ULockUI}}
+\doxysubsubsection{\texorpdfstring{blueHighlightImage}{blueHighlightImage}}
+{\footnotesize\ttfamily \label{class_u_lock_u_i_ae32386215af4f914bed813e2a5022f54} 
+UImage\texorpdfstring{$\ast$}{*} ULock\+UI\+::blue\+Highlight\+Image}
+
+\Hypertarget{class_u_lock_u_i_a4e90915a508fb0cd08eeadcb51a0f4f7}\index{ULockUI@{ULockUI}!closeButton@{closeButton}}
+\index{closeButton@{closeButton}!ULockUI@{ULockUI}}
+\doxysubsubsection{\texorpdfstring{closeButton}{closeButton}}
+{\footnotesize\ttfamily \label{class_u_lock_u_i_a4e90915a508fb0cd08eeadcb51a0f4f7} 
+UButton\texorpdfstring{$\ast$}{*} ULock\+UI\+::close\+Button}
+
+\Hypertarget{class_u_lock_u_i_ab7e05cda167f2ffc0240eee4351439fe}\index{ULockUI@{ULockUI}!errorImage@{errorImage}}
+\index{errorImage@{errorImage}!ULockUI@{ULockUI}}
+\doxysubsubsection{\texorpdfstring{errorImage}{errorImage}}
+{\footnotesize\ttfamily \label{class_u_lock_u_i_ab7e05cda167f2ffc0240eee4351439fe} 
+UImage\texorpdfstring{$\ast$}{*} ULock\+UI\+::error\+Image}
+
+\Hypertarget{class_u_lock_u_i_aea376dfa88a2e1d0276297e8144a77c8}\index{ULockUI@{ULockUI}!errorSound@{errorSound}}
+\index{errorSound@{errorSound}!ULockUI@{ULockUI}}
+\doxysubsubsection{\texorpdfstring{errorSound}{errorSound}}
+{\footnotesize\ttfamily \label{class_u_lock_u_i_aea376dfa88a2e1d0276297e8144a77c8} 
+USound\+Base\texorpdfstring{$\ast$}{*} ULock\+UI\+::error\+Sound}
+
+\Hypertarget{class_u_lock_u_i_a8d28d15d9411e8218421d8129646be38}\index{ULockUI@{ULockUI}!greenButton@{greenButton}}
+\index{greenButton@{greenButton}!ULockUI@{ULockUI}}
+\doxysubsubsection{\texorpdfstring{greenButton}{greenButton}}
+{\footnotesize\ttfamily \label{class_u_lock_u_i_a8d28d15d9411e8218421d8129646be38} 
+UButton\texorpdfstring{$\ast$}{*} ULock\+UI\+::green\+Button}
+
+\Hypertarget{class_u_lock_u_i_ad22954c3c8262c3310c68c4d7e0b6386}\index{ULockUI@{ULockUI}!greenHighlightImage@{greenHighlightImage}}
+\index{greenHighlightImage@{greenHighlightImage}!ULockUI@{ULockUI}}
+\doxysubsubsection{\texorpdfstring{greenHighlightImage}{greenHighlightImage}}
+{\footnotesize\ttfamily \label{class_u_lock_u_i_ad22954c3c8262c3310c68c4d7e0b6386} 
+UImage\texorpdfstring{$\ast$}{*} ULock\+UI\+::green\+Highlight\+Image}
+
+\Hypertarget{class_u_lock_u_i_adba1e0eedb73830ee006846448867f03}\index{ULockUI@{ULockUI}!hintButton@{hintButton}}
+\index{hintButton@{hintButton}!ULockUI@{ULockUI}}
+\doxysubsubsection{\texorpdfstring{hintButton}{hintButton}}
+{\footnotesize\ttfamily \label{class_u_lock_u_i_adba1e0eedb73830ee006846448867f03} 
+UButton\texorpdfstring{$\ast$}{*} ULock\+UI\+::hint\+Button}
+
+\Hypertarget{class_u_lock_u_i_a93e0797eb9b80024882496f949be99c5}\index{ULockUI@{ULockUI}!notesAudio@{notesAudio}}
+\index{notesAudio@{notesAudio}!ULockUI@{ULockUI}}
+\doxysubsubsection{\texorpdfstring{notesAudio}{notesAudio}}
+{\footnotesize\ttfamily \label{class_u_lock_u_i_a93e0797eb9b80024882496f949be99c5} 
+TArray$<$USound\+Base\texorpdfstring{$\ast$}{*}$>$ ULock\+UI\+::notes\+Audio}
+
+\Hypertarget{class_u_lock_u_i_ac4286b15d80371eb3b1abd36bd3f7f26}\index{ULockUI@{ULockUI}!openDoorActorClass@{openDoorActorClass}}
+\index{openDoorActorClass@{openDoorActorClass}!ULockUI@{ULockUI}}
+\doxysubsubsection{\texorpdfstring{openDoorActorClass}{openDoorActorClass}}
+{\footnotesize\ttfamily \label{class_u_lock_u_i_ac4286b15d80371eb3b1abd36bd3f7f26} 
+TSubclass\+Of$<$\mbox{\hyperlink{class_a_a_interactable_actor}{AAInteractable\+Actor}}$>$ ULock\+UI\+::open\+Door\+Actor\+Class}
+
+\Hypertarget{class_u_lock_u_i_a5f98d5726248f323599e2a8dce561a8a}\index{ULockUI@{ULockUI}!redButton@{redButton}}
+\index{redButton@{redButton}!ULockUI@{ULockUI}}
+\doxysubsubsection{\texorpdfstring{redButton}{redButton}}
+{\footnotesize\ttfamily \label{class_u_lock_u_i_a5f98d5726248f323599e2a8dce561a8a} 
+UButton\texorpdfstring{$\ast$}{*} ULock\+UI\+::red\+Button}
+
+\Hypertarget{class_u_lock_u_i_a3e1d99cb3d3e46fad6f19cfc676bb424}\index{ULockUI@{ULockUI}!redHighlightImage@{redHighlightImage}}
+\index{redHighlightImage@{redHighlightImage}!ULockUI@{ULockUI}}
+\doxysubsubsection{\texorpdfstring{redHighlightImage}{redHighlightImage}}
+{\footnotesize\ttfamily \label{class_u_lock_u_i_a3e1d99cb3d3e46fad6f19cfc676bb424} 
+UImage\texorpdfstring{$\ast$}{*} ULock\+UI\+::red\+Highlight\+Image}
+
+\Hypertarget{class_u_lock_u_i_a285cb04e139bbf771a9a2620ceec7e0a}\index{ULockUI@{ULockUI}!showButtonHightlightTime@{showButtonHightlightTime}}
+\index{showButtonHightlightTime@{showButtonHightlightTime}!ULockUI@{ULockUI}}
+\doxysubsubsection{\texorpdfstring{showButtonHightlightTime}{showButtonHightlightTime}}
+{\footnotesize\ttfamily \label{class_u_lock_u_i_a285cb04e139bbf771a9a2620ceec7e0a} 
+float ULock\+UI\+::show\+Button\+Hightlight\+Time = 0.\+7f}
+
+\Hypertarget{class_u_lock_u_i_acd7167e0e9e101f098f33ab75d4d5be5}\index{ULockUI@{ULockUI}!showErrorTime@{showErrorTime}}
+\index{showErrorTime@{showErrorTime}!ULockUI@{ULockUI}}
+\doxysubsubsection{\texorpdfstring{showErrorTime}{showErrorTime}}
+{\footnotesize\ttfamily \label{class_u_lock_u_i_acd7167e0e9e101f098f33ab75d4d5be5} 
+float ULock\+UI\+::show\+Error\+Time = 1.\+3f}
+
+\Hypertarget{class_u_lock_u_i_a47c024f6bf2b2f6d632c8644b8845f68}\index{ULockUI@{ULockUI}!timeBetweenNotes@{timeBetweenNotes}}
+\index{timeBetweenNotes@{timeBetweenNotes}!ULockUI@{ULockUI}}
+\doxysubsubsection{\texorpdfstring{timeBetweenNotes}{timeBetweenNotes}}
+{\footnotesize\ttfamily \label{class_u_lock_u_i_a47c024f6bf2b2f6d632c8644b8845f68} 
+float ULock\+UI\+::time\+Between\+Notes = 0.\+7f}
+
+\Hypertarget{class_u_lock_u_i_af2a4f615406eda0e8c092853ae995712}\index{ULockUI@{ULockUI}!volumeMultiplier@{volumeMultiplier}}
+\index{volumeMultiplier@{volumeMultiplier}!ULockUI@{ULockUI}}
+\doxysubsubsection{\texorpdfstring{volumeMultiplier}{volumeMultiplier}}
+{\footnotesize\ttfamily \label{class_u_lock_u_i_af2a4f615406eda0e8c092853ae995712} 
+float ULock\+UI\+::volume\+Multiplier = 1.\+5}
+
+\Hypertarget{class_u_lock_u_i_aca8260f50864fc6cdbd51b9035943ccf}\index{ULockUI@{ULockUI}!yellowButton@{yellowButton}}
+\index{yellowButton@{yellowButton}!ULockUI@{ULockUI}}
+\doxysubsubsection{\texorpdfstring{yellowButton}{yellowButton}}
+{\footnotesize\ttfamily \label{class_u_lock_u_i_aca8260f50864fc6cdbd51b9035943ccf} 
+UButton\texorpdfstring{$\ast$}{*} ULock\+UI\+::yellow\+Button}
+
+\Hypertarget{class_u_lock_u_i_a30f28e0ac3611287f09fda23c84e3e3b}\index{ULockUI@{ULockUI}!yellowHighlightImage@{yellowHighlightImage}}
+\index{yellowHighlightImage@{yellowHighlightImage}!ULockUI@{ULockUI}}
+\doxysubsubsection{\texorpdfstring{yellowHighlightImage}{yellowHighlightImage}}
+{\footnotesize\ttfamily \label{class_u_lock_u_i_a30f28e0ac3611287f09fda23c84e3e3b} 
+UImage\texorpdfstring{$\ast$}{*} ULock\+UI\+::yellow\+Highlight\+Image}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Source/\+Cplus\+Project/\+UI/\+Widgets/\mbox{\hyperlink{_lock_u_i_8h}{Lock\+UI.\+h}}\item 
+Source/\+Cplus\+Project/\+UI/\+Widgets/\mbox{\hyperlink{_lock_u_i_8cpp}{Lock\+UI.\+cpp}}\end{DoxyCompactItemize}

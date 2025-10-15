@@ -1,0 +1,35 @@
+\doxysection{Door\+Open\+Component.\+h}
+\hypertarget{_door_open_component_8h_source}{}\label{_door_open_component_8h_source}\index{Source/CplusProject/Environment/DoorOpenComponent.h@{Source/CplusProject/Environment/DoorOpenComponent.h}}
+\mbox{\hyperlink{_door_open_component_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}Components/ActorComponent.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}Kismet/GameplayStatics.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}DoorOpenComponent.generated.h"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ UCLASS(\ ClassGroup=(Custom),\ meta=(BlueprintSpawnableComponent)\ )}
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }CPLUSPROJECT\_API\ UDoorOpenComponent\ :\ \textcolor{keyword}{public}\ UActorComponent}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ private:\ \ \ \ }
+\DoxyCodeLine{00014\ \ \ \ \ UPROPERTY()}
+\DoxyCodeLine{00016\ \ \ \ \ FString\ nextScene;}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ public:}
+\DoxyCodeLine{00019\ \ \ \ \ inline\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_item_data_8h_ac94fb37af863804a7b0134ffa3f3b7b6a2a39ae68459c1376d004b2fd790adcee}{OpenDoor}}()\ }
+\DoxyCodeLine{00020\ \ \ \ \ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nextScene.IsEmpty())}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ UE\_LOG(LogTemp,\ Error,\ TEXT(\textcolor{stringliteral}{"{}Trying\ to\ open\ door\ but\ next\ scene\ name\ is\ empty!\ DOorOpenCOmponent"{}}));}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ return;}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ UGameplayStatics::OpenLevel(GetWorld(),\ FName(nextScene));}
+\DoxyCodeLine{00027\ \ \ \ \ \}}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ SetSceneName(\textcolor{keyword}{const}\ FString\&\ sceneName)\ \{\ nextScene\ =\ sceneName;\ \}}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00030\ \};}
+
+\end{DoxyCode}

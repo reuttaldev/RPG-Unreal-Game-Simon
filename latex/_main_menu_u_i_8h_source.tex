@@ -1,0 +1,29 @@
+\doxysection{Main\+Menu\+UI.\+h}
+\hypertarget{_main_menu_u_i_8h_source}{}\label{_main_menu_u_i_8h_source}\index{Source/CplusProject/UI/Widgets/MainMenuUI.h@{Source/CplusProject/UI/Widgets/MainMenuUI.h}}
+\mbox{\hyperlink{_main_menu_u_i_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}Blueprint/UserWidget.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}Components/Button.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}MainMenuUI.generated.h"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ UCLASS()}
+\DoxyCodeLine{00009\ class\ CPLUSPROJECT\_API\ \mbox{\hyperlink{class_u_main_menu_u_i}{UMainMenuUI}}\ :\ public\ UUserWidget}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00012\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{comment}{//\ =============================\ PROPERTIES\ =============================}}
+\DoxyCodeLine{00014\ \ \ \ \ UPROPERTY(VisibleAnywhere,\ meta\ =\ (BindWidget))}
+\DoxyCodeLine{00015\ \ \ \ \ UButton*\ startGameButton;}
+\DoxyCodeLine{00016\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{void}\ StartGame();}
+\DoxyCodeLine{00018\ protected:}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{comment}{//\ =============================\ FUNCTIONS\ =============================}}
+\DoxyCodeLine{00020\ \ \ \ \ virtual\ \textcolor{keywordtype}{void}\ NativeConstruct()\ override;}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \};}
+
+\end{DoxyCode}

@@ -18,7 +18,7 @@ void AMyPlayerController::SetLastInteractedActor(AActor* actor)
 	UE_LOG(LogTemp, Warning, TEXT("Last Interacted Actor Name: %s"), *lastInteractedActor->GetName());
 }
 
-// on enable and on disable. pawn = player. This gets called once the controller gets connected to the player that was spawned.
+/// on enable and on disable. pawn = player. This gets called once the controller gets connected to the player that was spawned.
 void AMyPlayerController::OnPossess(APawn* pawn)
 {
 	Super::OnPossess(pawn);
@@ -32,7 +32,7 @@ void AMyPlayerController::OnPossess(APawn* pawn)
 	// get the collision component of the player 
 	playerCollisionComponent = playerPtr->FindComponentByClass<UCapsuleComponent>();
 	checkf(playerCollisionComponent, TEXT("Unable to player collision component"));
-	// bind the collision to activate the on begin function we have here 
+	// bind the collision to activate the overlap logic handling 
 	playerCollisionComponent->OnComponentBeginOverlap.AddDynamic(this, &AMyPlayerController::OverlapBegin);
 	playerCollisionComponent->OnComponentEndOverlap.AddDynamic(this, &AMyPlayerController::OverlapEnd);
 
@@ -63,8 +63,8 @@ void AMyPlayerController::OnPossess(APawn* pawn)
  {
 	 //Unreal Engine classes use an F prefix for all their structures and classes.
 	 const FVector2D movementVector = inputActionValue.Get<FVector2D>();
-	 //execute movement. AddMovementInput is inhereted from 
-	 playerPtr->AddMovementInput(playerPtr->GetActorForwardVector(), movementVector.X * movementSpeed);
+	 //execute movement.
+	 playerPtr->AddMovementInput(playerPtr->GetActorForwardVector(), movementVector.X * movementSpeed* 100);
 	 playerPtr->AddMovementInput(playerPtr->GetActorRightVector(), movementVector.Y * movementSpeed);
 	 // this will be used in the animation
 	 direction.X = movementVector.X;

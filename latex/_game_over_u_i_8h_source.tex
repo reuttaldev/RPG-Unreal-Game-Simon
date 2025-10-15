@@ -1,0 +1,35 @@
+\doxysection{Game\+Over\+UI.\+h}
+\hypertarget{_game_over_u_i_8h_source}{}\label{_game_over_u_i_8h_source}\index{Source/CplusProject/UI/Widgets/GameOverUI.h@{Source/CplusProject/UI/Widgets/GameOverUI.h}}
+\mbox{\hyperlink{_game_over_u_i_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}Blueprint/UserWidget.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}Components/Button.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_main_menu_u_i_8h}{MainMenuUI.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}GameOverUI.generated.h"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ UCLASS()}
+\DoxyCodeLine{00010\ class\ CPLUSPROJECT\_API\ \mbox{\hyperlink{class_u_game_over_u_i}{UGameOverUI}}\ :\ public\ \mbox{\hyperlink{class_u_main_menu_u_i}{UMainMenuUI}}}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \ \ \ \ UPROPERTY(VisibleAnywhere,meta\ =\ (BindWidget))}
+\DoxyCodeLine{00015\ \ \ \ \ UButton*\ quitGameButton;}
+\DoxyCodeLine{00016\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{comment}{//\ =============================\ FUNCTIONS\ =============================}}
+\DoxyCodeLine{00018\ \ \ \ \ UFUNCTION()}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ QuitGame()\ }
+\DoxyCodeLine{00020\ \ \ \ \ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ GetWorld()-\/>GetFirstPlayerController()-\/>ConsoleCommand(\textcolor{stringliteral}{"{}quit"{}});}
+\DoxyCodeLine{00022\ \ \ \ \ \}}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ NativeConstruct()\textcolor{keyword}{\ override}}
+\DoxyCodeLine{00024\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ Super::NativeConstruct();}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ quitGameButton-\/>OnClicked.AddDynamic(\textcolor{keyword}{this},\ \&UGameOverUI::QuitGame);}
+\DoxyCodeLine{00027\ \ \ \ \ \}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \};}
+
+\end{DoxyCode}

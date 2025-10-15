@@ -1,0 +1,42 @@
+\doxysection{Flickering\+Light.\+h}
+\hypertarget{_flickering_light_8h_source}{}\label{_flickering_light_8h_source}\index{Source/CplusProject/Environment/FlickeringLight.h@{Source/CplusProject/Environment/FlickeringLight.h}}
+\mbox{\hyperlink{_flickering_light_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}GameFramework/Actor.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}Components/SpotLightComponent.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}FlickeringLight.generated.h"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ UCLASS()}
+\DoxyCodeLine{00009\ class\ CPLUSPROJECT\_API\ \mbox{\hyperlink{class_a_flickering_light}{AFlickeringLight}}\ :\ public\ AActor}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00012\ \ \ \ \ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{public}:\ }
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{comment}{//\ =============================\ FUNCTIONS\ =============================}}
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{class_a_flickering_light}{AFlickeringLight}}();}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Tick(\textcolor{keywordtype}{float}\ DeltaTime)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{comment}{//\ =============================\ PROPERTIES\ =============================}}
+\DoxyCodeLine{00018\ \ \ \ \ UPROPERTY(EditAnywhere,\ Category\ =\ \textcolor{stringliteral}{"{}Light\ Control"{}})}
+\DoxyCodeLine{00019\ \ \ \ \ USpotLightComponent*\ spotlight;}
+\DoxyCodeLine{00020\ protected:}
+\DoxyCodeLine{00021\ \ \ \ \ virtual\ \textcolor{keywordtype}{void}\ BeginPlay()\ override;}
+\DoxyCodeLine{00022\ private:}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{comment}{//\ =============================\ PROPERTIES\ =============================}}
+\DoxyCodeLine{00024\ \ \ \ \ UPROPERTY(EditAnywhere,\ Category\ =\ "{}Flicker\ Settings"{})}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{float}\ minIntensity;}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ UPROPERTY(EditAnywhere,\ Category\ =\ "{}Flicker\ Settings"{})}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{float}\ maxIntensity;}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ UPROPERTY(EditAnywhere,\ Category\ =\ "{}Flicker\ Settings"{})}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{float}\ flickerBreak;}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{float}\ timePassed;}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{comment}{//\ =============================\ FUNCTIONS\ =============================}}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ FlickerLight();}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \};}
+
+\end{DoxyCode}

@@ -1,0 +1,441 @@
+\begin{theindex}
+
+  \item {A}
+    \subitem {SimonData.h}, \hyperpage{41}
+  \item {AAInteractableActor}, \hyperpage{9}
+    \subitem {AAInteractableActor}, \hyperpage{9}
+    \subitem {BeginFocus2D}, \hyperpage{10}
+    \subitem {EndFocus2D}, \hyperpage{10}
+    \subitem {GetItemData}, \hyperpage{10}
+    \subitem {itemData}, \hyperpage{10}
+  \item {Ab}
+    \subitem {SimonData.h}, \hyperpage{41}
+  \item {actionInteract}
+    \subitem {AMyPlayerController}, \hyperpage{18}
+  \item {actionMove}
+    \subitem {AMyPlayerController}, \hyperpage{18}
+  \item {AFlickeringLight}, \hyperpage{10}
+    \subitem {AFlickeringLight}, \hyperpage{11}
+    \subitem {BeginPlay}, \hyperpage{11}
+    \subitem {spotlight}, \hyperpage{11}
+    \subitem {Tick}, \hyperpage{11}
+  \item {AGameOverUIController}, \hyperpage{12}
+    \subitem {BeginPlay}, \hyperpage{12}
+    \subitem {gameOverUIClass}, \hyperpage{13}
+  \item {AGameUIContoller}, \hyperpage{13}
+    \subitem {BeginPlay}, \hyperpage{14}
+    \subitem {CloseAll}, \hyperpage{14}
+    \subitem {CloseEncourageInteractUI}, \hyperpage{14}
+    \subitem {CloseLockUI}, \hyperpage{14}
+    \subitem {enourageInteractionUIClass}, \hyperpage{15}
+    \subitem {interactionUIClass}, \hyperpage{15}
+    \subitem {lockUIClass}, \hyperpage{15}
+    \subitem {OpenEncourageInteractUI}, \hyperpage{14}
+    \subitem {SetLockController}, \hyperpage{14}
+    \subitem {UpdateInteractionUI}, \hyperpage{14}
+  \item {AMainMenuUIController}, \hyperpage{15}
+    \subitem {BeginPlay}, \hyperpage{16}
+    \subitem {mainMenuClass}, \hyperpage{16}
+  \item {AMyPlayerController}, \hyperpage{16}
+    \subitem {actionInteract}, \hyperpage{18}
+    \subitem {actionMove}, \hyperpage{18}
+    \subitem {AMyPlayerController}, \hyperpage{17}
+    \subitem {direction}, \hyperpage{18}
+    \subitem {inputMappingContext}, \hyperpage{18}
+    \subitem {OnPossess}, \hyperpage{17}
+    \subitem {OnUnPossess}, \hyperpage{17}
+    \subitem {SetLastInteractedActor}, \hyperpage{17}
+  \item {AUIController}, \hyperpage{18}
+    \subitem {CloseAll}, \hyperpage{19}
+    \subitem {gameInputMode}, \hyperpage{19}
+    \subitem {inputModeUI}, \hyperpage{19}
+    \subitem {SwitchToPlayerControls}, \hyperpage{19}
+    \subitem {SwitchToUIControls}, \hyperpage{19}
+
+  \indexspace
+
+  \item {B}
+    \subitem {SimonData.h}, \hyperpage{41}
+  \item {Bb}
+    \subitem {SimonData.h}, \hyperpage{41}
+  \item {BeginFocus2D}
+    \subitem {AAInteractableActor}, \hyperpage{10}
+    \subitem {IInteractionInterface}, \hyperpage{23}
+  \item {BeginPlay}
+    \subitem {AFlickeringLight}, \hyperpage{11}
+    \subitem {AGameOverUIController}, \hyperpage{12}
+    \subitem {AGameUIContoller}, \hyperpage{14}
+    \subitem {AMainMenuUIController}, \hyperpage{16}
+  \item {BindButtons}
+    \subitem {ULockUI}, \hyperpage{26}
+  \item {Blue}
+    \subitem {SimonData.h}, \hyperpage{41}
+  \item {BlueButton}
+    \subitem {ULockUI}, \hyperpage{26}
+  \item {blueButton}
+    \subitem {ULockUI}, \hyperpage{28}
+  \item {blueHighlightImage}
+    \subitem {ULockUI}, \hyperpage{28}
+  \item {ButtonColors}
+    \subitem {SimonData.h}, \hyperpage{40}
+
+  \indexspace
+
+  \item {C}
+    \subitem {SimonData.h}, \hyperpage{41}
+  \item {CheckSequence}
+    \subitem {ULockUI}, \hyperpage{27}
+  \item {CloseAll}
+    \subitem {AGameUIContoller}, \hyperpage{14}
+    \subitem {AUIController}, \hyperpage{19}
+  \item {closeButton}
+    \subitem {ULockUI}, \hyperpage{28}
+  \item {CloseEncourageInteractUI}
+    \subitem {AGameUIContoller}, \hyperpage{14}
+  \item {CloseLockUI}
+    \subitem {AGameUIContoller}, \hyperpage{14}
+  \item {CPlusProject}, \hyperpage{1}
+  \item {CplusProject}, \hyperpage{19}
+    \subitem {CplusProject}, \hyperpage{20}
+  \item {CplusProject.cpp}
+    \subitem {IMPLEMENT\_PRIMARY\_GAME\_MODULE}, \hyperpage{33}
+
+  \indexspace
+
+  \item {D}
+    \subitem {SimonData.h}, \hyperpage{41}
+  \item {Db}
+    \subitem {SimonData.h}, \hyperpage{41}
+  \item {description}
+    \subitem {FItemData}, \hyperpage{21}
+  \item {direction}
+    \subitem {AMyPlayerController}, \hyperpage{18}
+
+  \indexspace
+
+  \item {E}
+    \subitem {SimonData.h}, \hyperpage{41}
+  \item {Eb}
+    \subitem {SimonData.h}, \hyperpage{41}
+  \item {EndFocus2D}
+    \subitem {AAInteractableActor}, \hyperpage{10}
+    \subitem {IInteractionInterface}, \hyperpage{23}
+  \item {enourageInteractionUIClass}
+    \subitem {AGameUIContoller}, \hyperpage{15}
+  \item {errorImage}
+    \subitem {ULockUI}, \hyperpage{28}
+  \item {errorSound}
+    \subitem {ULockUI}, \hyperpage{28}
+
+  \indexspace
+
+  \item {F}
+    \subitem {SimonData.h}, \hyperpage{41}
+  \item {FItemData}, \hyperpage{20}
+    \subitem {description}, \hyperpage{21}
+    \subitem {FItemData}, \hyperpage{20}
+    \subitem {GENERATED\_BODY}, \hyperpage{21}
+    \subitem {interactable}, \hyperpage{21}
+    \subitem {itemType}, \hyperpage{21}
+  \item {FSimonData}, \hyperpage{21}
+    \subitem {FSimonData}, \hyperpage{22}
+    \subitem {GENERATED\_BODY}, \hyperpage{22}
+    \subitem {mapColorToNote}, \hyperpage{22}
+    \subitem {sequence}, \hyperpage{22}
+
+  \indexspace
+
+  \item {G}
+    \subitem {SimonData.h}, \hyperpage{41}
+  \item {gameInputMode}
+    \subitem {AUIController}, \hyperpage{19}
+  \item {gameOverUIClass}
+    \subitem {AGameOverUIController}, \hyperpage{13}
+  \item {Gb}
+    \subitem {SimonData.h}, \hyperpage{41}
+  \item {GENERATED\_BODY}
+    \subitem {FItemData}, \hyperpage{21}
+    \subitem {FSimonData}, \hyperpage{22}
+  \item {GetItemData}
+    \subitem {AAInteractableActor}, \hyperpage{10}
+    \subitem {IInteractionInterface}, \hyperpage{23}
+  \item {GiveHint}
+    \subitem {ULockUI}, \hyperpage{27}
+  \item {Green}
+    \subitem {SimonData.h}, \hyperpage{41}
+  \item {GreenButton}
+    \subitem {ULockUI}, \hyperpage{27}
+  \item {greenButton}
+    \subitem {ULockUI}, \hyperpage{28}
+  \item {greenHighlightImage}
+    \subitem {ULockUI}, \hyperpage{28}
+
+  \indexspace
+
+  \item {hintButton}
+    \subitem {ULockUI}, \hyperpage{29}
+
+  \indexspace
+
+  \item {IInteractionInterface}, \hyperpage{22}
+    \subitem {BeginFocus2D}, \hyperpage{23}
+    \subitem {EndFocus2D}, \hyperpage{23}
+    \subitem {GetItemData}, \hyperpage{23}
+  \item {IMPLEMENT\_PRIMARY\_GAME\_MODULE}
+    \subitem {CplusProject.cpp}, \hyperpage{33}
+  \item {inputMappingContext}
+    \subitem {AMyPlayerController}, \hyperpage{18}
+  \item {inputModeUI}
+    \subitem {AUIController}, \hyperpage{19}
+  \item {Interactable}
+    \subitem {ItemData.h}, \hyperpage{39}
+  \item {interactable}
+    \subitem {FItemData}, \hyperpage{21}
+  \item {interactionUIClass}
+    \subitem {AGameUIContoller}, \hyperpage{15}
+  \item {itemData}
+    \subitem {AAInteractableActor}, \hyperpage{10}
+  \item {ItemData.h}
+    \subitem {Interactable}, \hyperpage{39}
+    \subitem {ItemType}, \hyperpage{39}
+    \subitem {Lock}, \hyperpage{39}
+    \subitem {NPC}, \hyperpage{39}
+    \subitem {OpenDoor}, \hyperpage{39}
+    \subitem {Pickup}, \hyperpage{39}
+    \subitem {Static}, \hyperpage{39}
+  \item {ItemType}
+    \subitem {ItemData.h}, \hyperpage{39}
+  \item {itemType}
+    \subitem {FItemData}, \hyperpage{21}
+
+  \indexspace
+
+  \item {Lock}
+    \subitem {ItemData.h}, \hyperpage{39}
+  \item {lockUIClass}
+    \subitem {AGameUIContoller}, \hyperpage{15}
+
+  \indexspace
+
+  \item {mainMenuClass}
+    \subitem {AMainMenuUIController}, \hyperpage{16}
+  \item {mapColorToNote}
+    \subitem {FSimonData}, \hyperpage{22}
+
+  \indexspace
+
+  \item {NativeConstruct}
+    \subitem {ULockUI}, \hyperpage{27}
+    \subitem {UMainMenuUI}, \hyperpage{30}
+  \item {None}
+    \subitem {SimonData.h}, \hyperpage{41}
+  \item {Notes}
+    \subitem {SimonData.h}, \hyperpage{41}
+  \item {notesAudio}
+    \subitem {ULockUI}, \hyperpage{29}
+  \item {NPC}
+    \subitem {ItemData.h}, \hyperpage{39}
+
+  \indexspace
+
+  \item {OnClose}
+    \subitem {ULockUI}, \hyperpage{27}
+  \item {OnOpen}
+    \subitem {ULockUI}, \hyperpage{27}
+  \item {OnPossess}
+    \subitem {AMyPlayerController}, \hyperpage{17}
+  \item {OnUnlocked}
+    \subitem {ULockUI}, \hyperpage{27}
+  \item {OnUnPossess}
+    \subitem {AMyPlayerController}, \hyperpage{17}
+  \item {OpenDoor}
+    \subitem {ItemData.h}, \hyperpage{39}
+  \item {openDoorActorClass}
+    \subitem {ULockUI}, \hyperpage{29}
+  \item {OpenEncourageInteractUI}
+    \subitem {AGameUIContoller}, \hyperpage{14}
+
+  \indexspace
+
+  \item {Pickup}
+    \subitem {ItemData.h}, \hyperpage{39}
+  \item {PlaySequence}
+    \subitem {ULockUI}, \hyperpage{27}
+
+  \indexspace
+
+  \item {README.txt}, \hyperpage{33}
+  \item {Red}
+    \subitem {SimonData.h}, \hyperpage{41}
+  \item {RedButton}
+    \subitem {ULockUI}, \hyperpage{28}
+  \item {redButton}
+    \subitem {ULockUI}, \hyperpage{29}
+  \item {redHighlightImage}
+    \subitem {ULockUI}, \hyperpage{29}
+
+  \indexspace
+
+  \item {sequence}
+    \subitem {FSimonData}, \hyperpage{22}
+  \item {SetLastInteractedActor}
+    \subitem {AMyPlayerController}, \hyperpage{17}
+  \item {SetLockController}
+    \subitem {AGameUIContoller}, \hyperpage{14}
+    \subitem {ULockUI}, \hyperpage{28}
+  \item {showButtonHightlightTime}
+    \subitem {ULockUI}, \hyperpage{29}
+  \item {showErrorTime}
+    \subitem {ULockUI}, \hyperpage{29}
+  \item {SimonData.h}
+    \subitem {A}, \hyperpage{41}
+    \subitem {Ab}, \hyperpage{41}
+    \subitem {B}, \hyperpage{41}
+    \subitem {Bb}, \hyperpage{41}
+    \subitem {Blue}, \hyperpage{41}
+    \subitem {ButtonColors}, \hyperpage{40}
+    \subitem {C}, \hyperpage{41}
+    \subitem {D}, \hyperpage{41}
+    \subitem {Db}, \hyperpage{41}
+    \subitem {E}, \hyperpage{41}
+    \subitem {Eb}, \hyperpage{41}
+    \subitem {F}, \hyperpage{41}
+    \subitem {G}, \hyperpage{41}
+    \subitem {Gb}, \hyperpage{41}
+    \subitem {Green}, \hyperpage{41}
+    \subitem {None}, \hyperpage{41}
+    \subitem {Notes}, \hyperpage{41}
+    \subitem {Red}, \hyperpage{41}
+    \subitem {Yellow}, \hyperpage{41}
+  \item {Source/CplusProject/CplusProject.Build.cs}, \hyperpage{33}
+  \item {Source/CplusProject/CplusProject.cpp}, \hyperpage{33}
+  \item {Source/CplusProject/CplusProject.h}, \hyperpage{33, 34}
+  \item {Source/CplusProject/Environment/AInteractableActor.cpp}, 
+		\hyperpage{34}
+  \item {Source/CplusProject/Environment/AInteractableActor.h}, 
+		\hyperpage{34}
+  \item {Source/CplusProject/Environment/DoorOpenComponent.h}, 
+		\hyperpage{35}
+  \item {Source/CplusProject/Environment/FlickeringLight.cpp}, 
+		\hyperpage{35}
+  \item {Source/CplusProject/Environment/FlickeringLight.h}, 
+		\hyperpage{35, 36}
+  \item {Source/CplusProject/Environment/LockControllerComponent.h}, 
+		\hyperpage{36}
+  \item {Source/CplusProject/Interfaces/InteractionInterface.h}, 
+		\hyperpage{37}
+  \item {Source/CplusProject/Player/MyPlayerController.cpp}, 
+		\hyperpage{37}
+  \item {Source/CplusProject/Player/MyPlayerController.h}, 
+		\hyperpage{38}
+  \item {Source/CplusProject/Structs/ItemData.cpp}, \hyperpage{39}
+  \item {Source/CplusProject/Structs/ItemData.h}, \hyperpage{39, 40}
+  \item {Source/CplusProject/Structs/SimonData.cpp}, \hyperpage{40}
+  \item {Source/CplusProject/Structs/SimonData.h}, \hyperpage{40, 41}
+  \item {Source/CplusProject/UI/Controllers/GameOverUIController.cpp}, 
+		\hyperpage{42}
+  \item {Source/CplusProject/UI/Controllers/GameOverUIController.h}, 
+		\hyperpage{42}
+  \item {Source/CplusProject/UI/Controllers/GameUIContoller.cpp}, 
+		\hyperpage{43}
+  \item {Source/CplusProject/UI/Controllers/GameUIContoller.h}, 
+		\hyperpage{43}
+  \item {Source/CplusProject/UI/Controllers/MainMenuUIController.cpp}, 
+		\hyperpage{44}
+  \item {Source/CplusProject/UI/Controllers/MainMenuUIController.h}, 
+		\hyperpage{44, 45}
+  \item {Source/CplusProject/UI/Controllers/UIController.cpp}, 
+		\hyperpage{45}
+  \item {Source/CplusProject/UI/Controllers/UIController.h}, 
+		\hyperpage{45}
+  \item {Source/CplusProject/UI/Widgets/GameOverUI.h}, \hyperpage{46}
+  \item {Source/CplusProject/UI/Widgets/InteractionUI.h}, 
+		\hyperpage{46, 47}
+  \item {Source/CplusProject/UI/Widgets/LockUI.cpp}, \hyperpage{47}
+  \item {Source/CplusProject/UI/Widgets/LockUI.h}, \hyperpage{47, 48}
+  \item {Source/CplusProject/UI/Widgets/MainMenuUI.cpp}, \hyperpage{49}
+  \item {Source/CplusProject/UI/Widgets/MainMenuUI.h}, \hyperpage{49}
+  \item {spotlight}
+    \subitem {AFlickeringLight}, \hyperpage{11}
+  \item {StartGame}
+    \subitem {UMainMenuUI}, \hyperpage{30}
+  \item {startGameButton}
+    \subitem {UMainMenuUI}, \hyperpage{31}
+  \item {Static}
+    \subitem {ItemData.h}, \hyperpage{39}
+  \item {SwitchToPlayerControls}
+    \subitem {AUIController}, \hyperpage{19}
+  \item {SwitchToUIControls}
+    \subitem {AUIController}, \hyperpage{19}
+
+  \indexspace
+
+  \item {Tick}
+    \subitem {AFlickeringLight}, \hyperpage{11}
+  \item {timeBetweenNotes}
+    \subitem {ULockUI}, \hyperpage{29}
+
+  \indexspace
+
+  \item {UGameOverUI}, \hyperpage{23}
+  \item {UInteractionInterface}, \hyperpage{24}
+  \item {UInteractionUI}, \hyperpage{25}
+    \subitem {UpdateWidget}, \hyperpage{25}
+  \item {ULockUI}, \hyperpage{25}
+    \subitem {BindButtons}, \hyperpage{26}
+    \subitem {BlueButton}, \hyperpage{26}
+    \subitem {blueButton}, \hyperpage{28}
+    \subitem {blueHighlightImage}, \hyperpage{28}
+    \subitem {CheckSequence}, \hyperpage{27}
+    \subitem {closeButton}, \hyperpage{28}
+    \subitem {errorImage}, \hyperpage{28}
+    \subitem {errorSound}, \hyperpage{28}
+    \subitem {GiveHint}, \hyperpage{27}
+    \subitem {GreenButton}, \hyperpage{27}
+    \subitem {greenButton}, \hyperpage{28}
+    \subitem {greenHighlightImage}, \hyperpage{28}
+    \subitem {hintButton}, \hyperpage{29}
+    \subitem {NativeConstruct}, \hyperpage{27}
+    \subitem {notesAudio}, \hyperpage{29}
+    \subitem {OnClose}, \hyperpage{27}
+    \subitem {OnOpen}, \hyperpage{27}
+    \subitem {OnUnlocked}, \hyperpage{27}
+    \subitem {openDoorActorClass}, \hyperpage{29}
+    \subitem {PlaySequence}, \hyperpage{27}
+    \subitem {RedButton}, \hyperpage{28}
+    \subitem {redButton}, \hyperpage{29}
+    \subitem {redHighlightImage}, \hyperpage{29}
+    \subitem {SetLockController}, \hyperpage{28}
+    \subitem {showButtonHightlightTime}, \hyperpage{29}
+    \subitem {showErrorTime}, \hyperpage{29}
+    \subitem {timeBetweenNotes}, \hyperpage{29}
+    \subitem {volumeMultiplier}, \hyperpage{29}
+    \subitem {YellowButton}, \hyperpage{28}
+    \subitem {yellowButton}, \hyperpage{29}
+    \subitem {yellowHighlightImage}, \hyperpage{30}
+  \item {UMainMenuUI}, \hyperpage{30}
+    \subitem {NativeConstruct}, \hyperpage{30}
+    \subitem {StartGame}, \hyperpage{30}
+    \subitem {startGameButton}, \hyperpage{31}
+  \item {UpdateInteractionUI}
+    \subitem {AGameUIContoller}, \hyperpage{14}
+  \item {UpdateWidget}
+    \subitem {UInteractionUI}, \hyperpage{25}
+
+  \indexspace
+
+  \item {volumeMultiplier}
+    \subitem {ULockUI}, \hyperpage{29}
+
+  \indexspace
+
+  \item {Yellow}
+    \subitem {SimonData.h}, \hyperpage{41}
+  \item {YellowButton}
+    \subitem {ULockUI}, \hyperpage{28}
+  \item {yellowButton}
+    \subitem {ULockUI}, \hyperpage{29}
+  \item {yellowHighlightImage}
+    \subitem {ULockUI}, \hyperpage{30}
+
+\end{theindex}

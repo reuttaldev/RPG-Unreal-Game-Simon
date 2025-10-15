@@ -65,6 +65,8 @@ public:
 	UFUNCTION()
 	void YellowButton() ;
 	UFUNCTION()
+	void GiveHint();
+	UFUNCTION()
 	/// when the UI panel gets opened
 	void OnOpen();
 	UFUNCTION()

@@ -1,0 +1,35 @@
+\doxysection{Item\+Data.\+h}
+\hypertarget{_item_data_8h_source}{}\label{_item_data_8h_source}\index{Source/CplusProject/Structs/ItemData.h@{Source/CplusProject/Structs/ItemData.h}}
+\mbox{\hyperlink{_item_data_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}ItemData.generated.h"{}}\ \ }
+\DoxyCodeLine{00005\ UENUM()}
+\DoxyCodeLine{00006\ enum\ class\ \mbox{\hyperlink{_item_data_8h_ac94fb37af863804a7b0134ffa3f3b7b6}{ItemType}}\ :\ uint8}
+\DoxyCodeLine{00007\ \{}
+\DoxyCodeLine{00008\ \ \ \ \ \mbox{\hyperlink{_item_data_8h_ac94fb37af863804a7b0134ffa3f3b7b6a40416286657a4c35860f7589774d11ac}{Interactable}}\ ,}
+\DoxyCodeLine{00009\ \ \ \ \ \mbox{\hyperlink{_item_data_8h_ac94fb37af863804a7b0134ffa3f3b7b6a84a8921b25f505d0d2077aeb5db4bc16}{Static}},}
+\DoxyCodeLine{00010\ \ \ \ \ \mbox{\hyperlink{_item_data_8h_ac94fb37af863804a7b0134ffa3f3b7b6ab485167c5b0e59d47009a16f90fe2659}{Lock}},}
+\DoxyCodeLine{00011\ \ \ \ \ \mbox{\hyperlink{_item_data_8h_ac94fb37af863804a7b0134ffa3f3b7b6a2a39ae68459c1376d004b2fd790adcee}{OpenDoor}},}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{comment}{//\ for\ further\ development\ use}}
+\DoxyCodeLine{00013\ \ \ \ \ \mbox{\hyperlink{_item_data_8h_ac94fb37af863804a7b0134ffa3f3b7b6a2bda99597da06a11feafd8760b68aec6}{NPC}},}
+\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{_item_data_8h_ac94fb37af863804a7b0134ffa3f3b7b6a96fd07f8244c1d8b9a38930ea4bdec97}{Pickup}},}
+\DoxyCodeLine{00015\ \};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ USTRUCT()}
+\DoxyCodeLine{00019\ struct\ CPLUSPROJECT\_API\ \mbox{\hyperlink{struct_f_item_data}{FItemData}}}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{struct_f_item_data_a76a31a1363d761b6125689a26bdfd5a9}{GENERATED\_BODY}}();}
+\DoxyCodeLine{00022\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{struct_f_item_data}{FItemData}}();}
+\DoxyCodeLine{00024\ \ \ \ \ UPROPERTY(editanywhere)\ }
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{_item_data_8h_ac94fb37af863804a7b0134ffa3f3b7b6}{ItemType}}\ itemType;}
+\DoxyCodeLine{00026\ \ \ \ \ UPROPERTY(editanywhere)}
+\DoxyCodeLine{00027\ \ \ \ \ FText\ description;}
+\DoxyCodeLine{00028\ \ \ \ \ UPROPERTY(editanywhere)}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{bool}\ interactable;}
+\DoxyCodeLine{00030\ \};}
+
+\end{DoxyCode}

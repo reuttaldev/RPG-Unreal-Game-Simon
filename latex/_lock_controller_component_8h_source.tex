@@ -1,0 +1,26 @@
+\doxysection{Lock\+Controller\+Component.\+h}
+\hypertarget{_lock_controller_component_8h_source}{}\label{_lock_controller_component_8h_source}\index{Source/CplusProject/Environment/LockControllerComponent.h@{Source/CplusProject/Environment/LockControllerComponent.h}}
+\mbox{\hyperlink{_lock_controller_component_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}Components/ActorComponent.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_simon_data_8h}{../Structs/SimonData.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}LockControllerComponent.generated.h"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ UCLASS(ClassGroup\ =\ (Custom),\ meta\ =\ (BlueprintSpawnableComponent))}
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }CPLUSPROJECT\_API\ ULockControllerComponent\ :\ \textcolor{keyword}{public}\ UActorComponent}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ public:}
+\DoxyCodeLine{00016\ \ \ \ \ UPROPERTY(EditAnywhere,\ Category\ =\ "{}\mbox{\hyperlink{_item_data_8h_ac94fb37af863804a7b0134ffa3f3b7b6ab485167c5b0e59d47009a16f90fe2659}{Lock}}\ Data"{})}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{struct_f_simon_data}{FSimonData}}\ simonData;}
+\DoxyCodeLine{00018\ \ \ \ \ UPROPERTY(EditAnywhere,\ Category\ =\ "{}\mbox{\hyperlink{_item_data_8h_ac94fb37af863804a7b0134ffa3f3b7b6ab485167c5b0e59d47009a16f90fe2659}{Lock}}\ Data"{})}
+\DoxyCodeLine{00019\ \ \ \ \ FString\ nextLevelName;}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \};}
+
+\end{DoxyCode}
